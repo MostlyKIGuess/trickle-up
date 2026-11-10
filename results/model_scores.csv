@@ -1,0 +1,13 @@
+case,model,transform,seed,median_score,gatebias_score,fit_seconds
+nmos_on,null_median,none,463,0.995149,0.978376,0
+nmos_on,mlp,log,463,0.0096365,0.00353795,104.327
+nmos_on,mlp_ensemble5,log,463,0.00595868,0.00168488,426.888
+nmos_off,null_median,none,463,3.40489,1,0
+nmos_off,mlp,log,463,0.0803123,0.0380043,73.9309
+nmos_off,mlp_ensemble5,log,463,0.0608033,0.0212935,298.412
+pmos_on,null_median,none,463,0.992376,0.952107,0
+pmos_on,mlp,log,463,0.00861504,0.00258426,102.759
+pmos_on,mlp_ensemble5,log,463,0.00583674,0.00128744,440.741
+pmos_off,null_median,none,463,1.96466,1,0
+pmos_off,mlp,log,463,0.0551577,0.0427177,74.3931
+pmos_off,mlp_ensemble5,log,463,0.0358128,0.0264107,308.781

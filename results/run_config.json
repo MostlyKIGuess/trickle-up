@@ -1,0 +1,31 @@
+{
+  "models": [
+    "mlp"
+  ],
+  "transforms": [
+    "log"
+  ],
+  "cases": [
+    "nmos_on",
+    "nmos_off",
+    "pmos_on",
+    "pmos_off"
+  ],
+  "seed": 463,
+  "training_sets": [
+    "uniform",
+    "targeted"
+  ],
+  "select": "median",
+  "learning_curve": false,
+  "options": {
+    "weff": false,
+    "separate": true,
+    "mask_off_ig": true
+  },
+  "ensemble": 5,
+  "git": {
+    "commit": "0826d56f3e7a581560adc8b3618c92bdc7ffe523",
+    "dirty": false
+  }
+}

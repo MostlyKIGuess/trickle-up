@@ -1,0 +1,35 @@
+{
+  "models": [
+    "poly_ridge",
+    "extra_trees",
+    "lightgbm",
+    "mlp"
+  ],
+  "transforms": [
+    "log",
+    "asinh"
+  ],
+  "cases": [
+    "nmos_on",
+    "nmos_off",
+    "pmos_on",
+    "pmos_off"
+  ],
+  "seed": 463,
+  "training_sets": [
+    "uniform",
+    "targeted"
+  ],
+  "select": "median",
+  "learning_curve": true,
+  "options": {
+    "weff": false,
+    "separate": false,
+    "mask_off_ig": false
+  },
+  "ensemble": 1,
+  "git": {
+    "commit": "638a0f0a90f0c0681b5a910e2fe1f1e024693726",
+    "dirty": true
+  }
+}
