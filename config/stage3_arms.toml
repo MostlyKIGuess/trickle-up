@@ -1,0 +1,58 @@
+# Pre-registration of HANDOFF.md stages 2 and 3, committed before any arm or noise-floor result exists.
+# Read by scripts/11_compare_runs.py. Never edit after the first result. Every run is reported.
+#
+# Every metric is on Part A validation rows only (split seed 463), never on Part B or Part C. The
+# metrics are defined in 11_compare_runs.py. All but the first two are mean relative errors
+# |predicted - SPICE| / |SPICE|:
+#   gatebias_score    04_train.py's gate-bias score, sum |predicted - SPICE| / sum |SPICE| over the
+#                     currents the composition uses, averaged over the four cases. The handoff's plain
+#                     mean of relative errors was dropped before any arm ran: on the committed models
+#                     OFF gate currents of 1e-26 to 1e-19 A gave it 35 for the OFF cases, 0.095 weighted.
+#   median_score      04_train.py's old selection score (median error, uniform and targeted), averaged over cases
+#   on_ig             ON Ig on the gate-bias set, averaged over NMOS and PMOS
+#   on_ig_narrow_ratio  ON Ig error for W below 1.5 Lmin over that above 2 Lmin, gate-bias set, averaged over devices
+#   off_id_across     OFF Id on gate-bias rows with drain and source on opposite rails (|Vds| above VDD / 2)
+#   hot_score         gatebias_score on the gate-bias rows above 92 C
+
+[noise]
+# Stage 2: the current method (MLP, log target, uniform and targeted sets) with these model seeds.
+seeds = [463, 464, 465, 466, 467, 468, 469, 470]
+# An arm improves a metric only if its 3-seed mean is lower than the baseline's 8-seed mean by more
+# than this many baseline standard deviations (sample standard deviation over the 8 seeds).
+improvement_sigmas = 2.0
+
+[arms]
+# Each arm alone against the baseline, these three seeds each. The ensemble draws its own members
+# (seed and the next four), so its three runs start at 463, 473 and 483 and share no member.
+seeds = [463, 464, 465]
+ensemble_seeds = [463, 473, 483]
+
+[arms.A1]
+change = "ON Ig and Ib per effective width W - 2 wint, log_weff as a feature (04_train.py --weff)"
+flags = ["--weff"]
+# Fails if on_ig_narrow_ratio stays at or above 1.5.
+kill = "on_ig_narrow_ratio >= 1.5"
+
+[arms.A2]
+change = "Separate MLP for ON Ig and Ib (04_train.py --separate)"
+flags = ["--separate"]
+# Fails if on_ig improves by less than 1.5 times over the baseline mean.
+kill = "baseline on_ig / arm on_ig < 1.5"
+
+[arms.A3]
+change = "Train on the gate-bias set as well (04_train.py --training-sets uniform,targeted,gatebias)"
+flags = ["--training-sets", "uniform,targeted,gatebias"]
+# Fails if off_id_across stays above 5 %, or hot_score does not improve by the noise rule.
+kill = "off_id_across > 0.05 or hot_score not improved"
+
+[arms.A4]
+change = "OFF Ig at or below 1e-26 A out of the MLP loss (04_train.py --mask-off-ig)"
+flags = ["--mask-off-ig"]
+# Fails if off_id_across does not improve by the noise rule.
+kill = "off_id_across not improved"
+
+[arms.A5]
+change = "Ensemble of 5 seeds averaged in log space (04_train.py --ensemble 5)"
+flags = ["--ensemble", "5"]
+# Fails if gatebias_score improves by less than 5 % of the baseline mean.
+kill = "arm gatebias_score > 0.95 * baseline gatebias_score"
