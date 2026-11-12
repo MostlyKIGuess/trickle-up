@@ -1,0 +1,14 @@
+case,current,rows,below_floor,r2_log10,median_abs_log10_error,sign_agreement
+nmos_on,ig,4200,0,1,0,1
+nmos_on,ib,4200,0,1,0,1
+nmos_off,id,4200,0,1,0,1
+nmos_off,ig,4200,2893,1,0,1
+nmos_off,is,4200,0,1,0,1
+nmos_off,ib,4200,0,1,0,1
+pmos_on,ig,4200,0,1,0,1
+pmos_on,ib,4200,0,1,0,1
+pmos_off,id,4200,0,1,0,1
+pmos_off,ig,4200,2806,1,0,1
+pmos_off,is,4200,0,1,0,1
+pmos_off,ib,4200,0,1,0,1
+all,all,50400,5699,1,0,1
