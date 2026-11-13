@@ -1,0 +1,2 @@
+simulations,median_leak_device_A,min_leak_device_A,median_relative_difference,p95_relative_difference,max_relative_difference,max_abs_difference_A
+25600,4.352258e-09,3.965280e-10,1.414039e-05,1.026730e-04,4.568893e-04,2.975089e-13

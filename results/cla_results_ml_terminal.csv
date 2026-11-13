@@ -1,0 +1,2 @@
+simulations,spice_median_A,predicted_median_A,bias_percent,mean_error_percent,median_error_percent,p95_error_percent,max_error_percent
+25600,4.35226e-09,1.65007e-09,-53.4055,53.5954,51.4973,111.308,154.42

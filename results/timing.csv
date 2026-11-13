@@ -1,0 +1,11 @@
+name,value
+spice_adder_runs,160
+spice_adder_seconds_per_run,0.465174
+spice_gate_runs,180
+spice_gate_seconds_per_run,0.00905536
+ml_corners_in_batch,200
+ml_seconds_per_corner,0.0209647
+method_seconds_per_corner,0.183961
+method_seconds_per_adder_leakage,0.0014372
+spice_seconds_per_adder_leakage,0.465174
+speedup,323.668

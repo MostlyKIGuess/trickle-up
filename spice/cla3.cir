@@ -1,0 +1,1125 @@
+* Example netlist: 3-bit carry-lookahead adder at the nominal corner, vector 0 (every input at 0 V).
+* scripts/08_cla_spice.py writes one deck like this per vector and corner, with the corner's
+* process values in the model cards, its VDD and temperature, and each input at 0 or VDD.
+* The model cards are given/models/22nm_LP.pm with rgatemod = 0 (see README).
+* 3-bit carry-lookahead adder, vector 0
+* PTM Low Power 22nm Metal Gate / High-K / Strained-Si
+* nominal Vdd = 0.95V
+
+.model  nmos  nmos  level = 54
+
+
++version = 4.0             binunit = 1               paramchk= 1               mobmod  = 0             
++capmod  = 2               igcmod  = 1               igbmod  = 1               geomod  = 1             
++diomod  = 1               rdsmod  = 0               rbodymod= 1               rgatemod= 0             
++permod  = 1               acnqsmod= 0               trnqsmod= 0             
+
++tnom    = 27              toxe    = 1.4000000000e-09        toxp    = 1.1e-009        toxm    = 1.4e-009      
++dtox    = 3e-010          epsrox  = 3.9             wint    = 5e-009          lint    = 0             
++ll      = 0               wl      = 0               lln     = 1               wln     = 1             
++lw      = 0               ww      = 0               lwn     = 1               wwn     = 1             
++lwl     = 0               wwl     = 0               xpart   = 0               toxref  = 1.4e-009      
+
++vth0    = 6.8858000000e-01         k1      = 0.4             k2      = 0               k3      = 0             
++k3b     = 0               w0      = 2.5e-006        dvt0    = 1               dvt1    = 2             
++dvt2    = 0               dvt0w   = 0               dvt1w   = 0               dvt2w   = 0             
++dsub    = 0.1             minv    = 0.05            voffl   = 0               dvtp0   = 1e-011        
++dvtp1   = 0.1             lpe0    = 0               lpeb    = 0               xj      = 7.2000000000e-09      
++ngate   = 1e+023          ndep    = 5.5000000000e+18        nsd     = 2e+020          phin    = 0             
++cdsc    = 0               cdscb   = 0               cdscd   = 0               cit     = 0             
++voff    = -0.1092         nfactor = 1.6             eta0    = 0.0105          etab    = 0             
++vfb     = -0.55           u0      = 3.5000000000e-02           ua      = 6e-010          ub      = 1.2e-018      
++uc      = 0               vsat    = 170000          a0      = 1               ags     = 0             
++a1      = 0               a2      = 1               b0      = 0               b1      = 0             
++keta    = 0.04            dwg     = 0               dwb     = 0               pclm    = 0.02          
++pdiblc1 = 0.001           pdiblc2 = 0.001           pdiblcb = -0.005          drout   = 0.5           
++pvag    = 1e-020          delta   = 0.01            pscbe1  = 8.14e+008       pscbe2  = 1e-007        
++fprout  = 0.2             pdits   = 0.01            pditsd  = 0.23            pditsl  = 2300000       
++rsh     = 5               rdsw    = 180             rsw     = 75              rdw     = 75            
++rdswmin = 0               rdwmin  = 0               rswmin  = 0               prwg    = 0             
++prwb    = 0               wr      = 1               alpha0  = 0.074           alpha1  = 0.005         
++beta0   = 30              agidl   = 0.0002          bgidl   = 2.1e+009        cgidl   = 0.0002        
++egidl   = 0.8             aigbacc = 0.012           bigbacc = 0.0028          cigbacc = 0.002         
++nigbacc = 1               aigbinv = 0.014           bigbinv = 0.004           cigbinv = 0.004         
++eigbinv = 1.1             nigbinv = 3               aigc    = 0.015211        bigc    = 0.0027432     
++cigc    = 0.002           aigsd   = 0.015211        bigsd   = 0.0027432       cigsd   = 0.002         
++nigc    = 1               poxedge = 1               pigcd   = 1               ntox    = 1             
++xrcrg1  = 12              xrcrg2  = 5             
+
++cgso    = 6.5e-011        cgdo    = 6.5e-011        cgbo    = 2.56e-011       cgdl    = 2.653e-010    
++cgsl    = 2.653e-010      ckappas = 0.03            ckappad = 0.03            acde    = 1             
++moin    = 15              noff    = 0.9             voffcv  = 0.02          
+
++kt1     = -0.11           kt1l    = 0               kt2     = 0.022           ute     = -1.5          
++ua1     = 4.31e-009       ub1     = 7.61e-018       uc1     = -5.6e-011       prt     = 0             
++at      = 33000         
+
++fnoimod = 1               tnoimod = 0             
+
++jss     = 0.0001          jsws    = 1e-011          jswgs   = 1e-010          njs     = 1             
++ijthsfwd= 0.01            ijthsrev= 0.001           bvs     = 10              xjbvs   = 1             
++jsd     = 0.0001          jswd    = 1e-011          jswgd   = 1e-010          njd     = 1             
++ijthdfwd= 0.01            ijthdrev= 0.001           bvd     = 10              xjbvd   = 1             
++pbs     = 1               cjs     = 0.0005          mjs     = 0.5             pbsws   = 1             
++cjsws   = 5e-010          mjsws   = 0.33            pbswgs  = 1               cjswgs  = 3e-010        
++mjswgs  = 0.33            pbd     = 1               cjd     = 0.0005          mjd     = 0.5           
++pbswd   = 1               cjswd   = 5e-010          mjswd   = 0.33            pbswgd  = 1             
++cjswgd  = 5e-010          mjswgd  = 0.33            tpb     = 0.005           tcj     = 0.001         
++tpbsw   = 0.005           tcjsw   = 0.001           tpbswg  = 0.005           tcjswg  = 0.001         
++xtis    = 3               xtid    = 3             
+
++dmcg    = 0               dmci    = 0               dmdg    = 0               dmcgt   = 0             
++dwj     = 0               xgw     = 0               xgl     = 0             
+
++rshg    = 0.4             gbmin   = 1e-010          rbpb    = 5               rbpd    = 15            
++rbps    = 15              rbdb    = 15              rbsb    = 15              ngcon   = 1             
+
+
+.model  pmos  pmos  level = 54
+
++version = 4.0             binunit = 1               paramchk= 1               mobmod  = 0             
++capmod  = 2               igcmod  = 1               igbmod  = 1               geomod  = 1             
++diomod  = 1               rdsmod  = 0               rbodymod= 1               rgatemod= 0             
++permod  = 1               acnqsmod= 0               trnqsmod= 0             
+
++tnom    = 27              toxe    = 1.4000000000e-09        toxp    = 1.08e-009       toxm    = 1.42e-009     
++dtox    = 3.2e-010        epsrox  = 3.9             wint    = 5e-009          lint    = 0             
++ll      = 0               wl      = 0               lln     = 1               wln     = 1             
++lw      = 0               ww      = 0               lwn     = 1               wwn     = 1             
++lwl     = 0               wwl     = 0               xpart   = 0               toxref  = 1.42e-009     
+
++vth0    = -6.3745000000e-01        k1      = 0.4             k2      = -0.01           k3      = 0             
++k3b     = 0               w0      = 2.5e-006        dvt0    = 1               dvt1    = 2             
++dvt2    = -0.032          dvt0w   = 0               dvt1w   = 0               dvt2w   = 0             
++dsub    = 0.1             minv    = 0.05            voffl   = 0               dvtp0   = 1e-011        
++dvtp1   = 0.05            lpe0    = 0               lpeb    = 0               xj      = 7.2000000000e-09      
++ngate   = 1e+023          ndep    = 4.4000000000e+18        nsd     = 2e+020          phin    = 0             
++cdsc    = 0               cdscb   = 0               cdscd   = 0               cit     = 0             
++voff    = -0.09           nfactor = 1.8             eta0    = 0.0105          etab    = 0             
++vfb     = 0.55            u0      = 1.1000000000e-02           ua      = 2e-009          ub      = 5e-019        
++uc      = 0               vsat    = 170000          a0      = 1               ags     = 1e-020        
++a1      = 0               a2      = 1               b0      = 0               b1      = 0             
++keta    = -0.047          dwg     = 0               dwb     = 0               pclm    = 0.12          
++pdiblc1 = 0.001           pdiblc2 = 0.001           pdiblcb = 3.4e-008        drout   = 0.56          
++pvag    = 1e-020          delta   = 0.01            pscbe1  = 8.14e+008       pscbe2  = 9.58e-007     
++fprout  = 0.2             pdits   = 0.08            pditsd  = 0.23            pditsl  = 2300000       
++rsh     = 5               rdsw    = 230             rsw     = 72.5            rdw     = 72.5          
++rdswmin = 0               rdwmin  = 0               rswmin  = 0               prwg    = 0             
++prwb    = 0               wr      = 1               alpha0  = 0.074           alpha1  = 0.005         
++beta0   = 30              agidl   = 0.0002          bgidl   = 2.1e+009        cgidl   = 0.0002        
++egidl   = 0.8             aigbacc = 0.012           bigbacc = 0.0028          cigbacc = 0.002         
++nigbacc = 1               aigbinv = 0.014           bigbinv = 0.004           cigbinv = 0.004         
++eigbinv = 1.1             nigbinv = 3               aigc    = 0.0097          bigc    = 0.00125       
++cigc    = 0.0008          aigsd   = 0.0097          bigsd   = 0.00125         cigsd   = 0.0008        
++nigc    = 1               poxedge = 1               pigcd   = 1               ntox    = 1             
++xrcrg1  = 12              xrcrg2  = 5             
+
++cgso    = 6.5e-011        cgdo    = 6.5e-011        cgbo    = 2.56e-011       cgdl    = 2.653e-010    
++cgsl    = 2.653e-010      ckappas = 0.03            ckappad = 0.03            acde    = 1             
++moin    = 15              noff    = 0.9             voffcv  = 0.02          
+
++kt1     = -0.11           kt1l    = 0               kt2     = 0.022           ute     = -1.5          
++ua1     = 4.31e-009       ub1     = 7.61e-018       uc1     = -5.6e-011       prt     = 0             
++at      = 33000         
+
++fnoimod = 1               tnoimod = 0             
+
++jss     = 0.0001          jsws    = 1e-011          jswgs   = 1e-010          njs     = 1             
++ijthsfwd= 0.01            ijthsrev= 0.001           bvs     = 10              xjbvs   = 1             
++jsd     = 0.0001          jswd    = 1e-011          jswgd   = 1e-010          njd     = 1             
++ijthdfwd= 0.01            ijthdrev= 0.001           bvd     = 10              xjbvd   = 1             
++pbs     = 1               cjs     = 0.0005          mjs     = 0.5             pbsws   = 1             
++cjsws   = 5e-010          mjsws   = 0.33            pbswgs  = 1               cjswgs  = 3e-010        
++mjswgs  = 0.33            pbd     = 1               cjd     = 0.0005          mjd     = 0.5           
++pbswd   = 1               cjswd   = 5e-010          mjswd   = 0.33            pbswgd  = 1             
++cjswgd  = 5e-010          mjswgd  = 0.33            tpb     = 0.005           tcj     = 0.001         
++tpbsw   = 0.005           tcjsw   = 0.001           tpbswg  = 0.005           tcjswg  = 0.001         
++xtis    = 3               xtid    = 3             
+
++dmcg    = 0               dmci    = 0               dmdg    = 0               dmcgt   = 0             
++dwj     = 0               xgw     = 0               xgl     = 0             
+
++rshg    = 0.4             gbmin   = 1e-010          rbpb    = 5               rbpd    = 15            
++rbps    = 15              rbdb    = 15              rbsb    = 15              ngcon   = 1             
+
+
+.options gmin=1e-18 abstol=1e-18 reltol=1e-6 vntol=1e-9
+.temp 27.000000
+
+mnb_p0x1 p0x1 b0 x_p0x1 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_p0x1 x_p0x1 a0 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_p0x1 p0x1 a0 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_p0x1 p0x1 b0 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_p0x2 p0x2 p0x1 x_p0x2 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_p0x2 x_p0x2 a0 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_p0x2 p0x2 a0 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_p0x2 p0x2 p0x1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_p0x3 p0x3 p0x1 x_p0x3 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_p0x3 x_p0x3 b0 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_p0x3 p0x3 b0 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_p0x3 p0x3 p0x1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_p0x4 p0 p0x3 x_p0x4 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_p0x4 x_p0x4 p0x2 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_p0x4 p0 p0x2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_p0x4 p0 p0x3 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_p1x1 p1x1 b1 x_p1x1 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_p1x1 x_p1x1 a1 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_p1x1 p1x1 a1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_p1x1 p1x1 b1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_p1x2 p1x2 p1x1 x_p1x2 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_p1x2 x_p1x2 a1 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_p1x2 p1x2 a1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_p1x2 p1x2 p1x1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_p1x3 p1x3 p1x1 x_p1x3 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_p1x3 x_p1x3 b1 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_p1x3 p1x3 b1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_p1x3 p1x3 p1x1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_p1x4 p1 p1x3 x_p1x4 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_p1x4 x_p1x4 p1x2 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_p1x4 p1 p1x2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_p1x4 p1 p1x3 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_p2x1 p2x1 b2 x_p2x1 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_p2x1 x_p2x1 a2 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_p2x1 p2x1 a2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_p2x1 p2x1 b2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_p2x2 p2x2 p2x1 x_p2x2 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_p2x2 x_p2x2 a2 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_p2x2 p2x2 a2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_p2x2 p2x2 p2x1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_p2x3 p2x3 p2x1 x_p2x3 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_p2x3 x_p2x3 b2 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_p2x3 p2x3 b2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_p2x3 p2x3 p2x1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_p2x4 p2 p2x3 x_p2x4 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_p2x4 x_p2x4 p2x2 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_p2x4 p2 p2x2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_p2x4 p2 p2x3 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_g0 inner_g0 b0 x_g0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_g0 x_g0 a0 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_g0 inner_g0 a0 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_g0 inner_g0 b0 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mni_g0 g0 inner_g0 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mpi_g0 g0 inner_g0 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_g1 inner_g1 b1 x_g1 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_g1 x_g1 a1 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_g1 inner_g1 a1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_g1 inner_g1 b1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mni_g1 g1 inner_g1 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mpi_g1 g1 inner_g1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_g2 inner_g2 b2 x_g2 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_g2 x_g2 a2 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_g2 inner_g2 a2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_g2 inner_g2 b2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mni_g2 g2 inner_g2 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mpi_g2 g2 inner_g2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_t10 inner_t10 cin x_t10 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_t10 x_t10 p0 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_t10 inner_t10 p0 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_t10 inner_t10 cin vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mni_t10 t10 inner_t10 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mpi_t10 t10 inner_t10 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_c1 y_c1 g0 vdd vdd pmos W=8.800000e-08 L=2.200000e-08 AD=3.872000e-15 AS=3.872000e-15 PD=2.640000e-07 PS=2.640000e-07
+mpb_c1 inner_c1 t10 y_c1 vdd pmos W=8.800000e-08 L=2.200000e-08 AD=3.872000e-15 AS=3.872000e-15 PD=2.640000e-07 PS=2.640000e-07
+mna_c1 inner_c1 g0 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mnb_c1 inner_c1 t10 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mni_c1 c1 inner_c1 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mpi_c1 c1 inner_c1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_t20 inner_t20 g0 x_t20 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_t20 x_t20 p1 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_t20 inner_t20 p1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_t20 inner_t20 g0 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mni_t20 t20 inner_t20 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mpi_t20 t20 inner_t20 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_p10 inner_p10 p0 x_p10 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_p10 x_p10 p1 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_p10 inner_p10 p1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_p10 inner_p10 p0 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mni_p10 p10 inner_p10 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mpi_p10 p10 inner_p10 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_t21 inner_t21 cin x_t21 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_t21 x_t21 p10 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_t21 inner_t21 p10 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_t21 inner_t21 cin vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mni_t21 t21 inner_t21 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mpi_t21 t21 inner_t21 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_o20 y_o20 g1 vdd vdd pmos W=8.800000e-08 L=2.200000e-08 AD=3.872000e-15 AS=3.872000e-15 PD=2.640000e-07 PS=2.640000e-07
+mpb_o20 inner_o20 t20 y_o20 vdd pmos W=8.800000e-08 L=2.200000e-08 AD=3.872000e-15 AS=3.872000e-15 PD=2.640000e-07 PS=2.640000e-07
+mna_o20 inner_o20 g1 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mnb_o20 inner_o20 t20 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mni_o20 o20 inner_o20 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mpi_o20 o20 inner_o20 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_c2 y_c2 o20 vdd vdd pmos W=8.800000e-08 L=2.200000e-08 AD=3.872000e-15 AS=3.872000e-15 PD=2.640000e-07 PS=2.640000e-07
+mpb_c2 inner_c2 t21 y_c2 vdd pmos W=8.800000e-08 L=2.200000e-08 AD=3.872000e-15 AS=3.872000e-15 PD=2.640000e-07 PS=2.640000e-07
+mna_c2 inner_c2 o20 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mnb_c2 inner_c2 t21 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mni_c2 c2 inner_c2 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mpi_c2 c2 inner_c2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_t30 inner_t30 g1 x_t30 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_t30 x_t30 p2 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_t30 inner_t30 p2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_t30 inner_t30 g1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mni_t30 t30 inner_t30 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mpi_t30 t30 inner_t30 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_p21 inner_p21 p1 x_p21 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_p21 x_p21 p2 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_p21 inner_p21 p2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_p21 inner_p21 p1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mni_p21 p21 inner_p21 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mpi_p21 p21 inner_p21 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_t31 inner_t31 g0 x_t31 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_t31 x_t31 p21 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_t31 inner_t31 p21 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_t31 inner_t31 g0 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mni_t31 t31 inner_t31 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mpi_t31 t31 inner_t31 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_p210 inner_p210 p0 x_p210 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_p210 x_p210 p21 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_p210 inner_p210 p21 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_p210 inner_p210 p0 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mni_p210 p210 inner_p210 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mpi_p210 p210 inner_p210 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_t32 inner_t32 cin x_t32 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_t32 x_t32 p210 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_t32 inner_t32 p210 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_t32 inner_t32 cin vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mni_t32 t32 inner_t32 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mpi_t32 t32 inner_t32 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_o30 y_o30 g2 vdd vdd pmos W=8.800000e-08 L=2.200000e-08 AD=3.872000e-15 AS=3.872000e-15 PD=2.640000e-07 PS=2.640000e-07
+mpb_o30 inner_o30 t30 y_o30 vdd pmos W=8.800000e-08 L=2.200000e-08 AD=3.872000e-15 AS=3.872000e-15 PD=2.640000e-07 PS=2.640000e-07
+mna_o30 inner_o30 g2 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mnb_o30 inner_o30 t30 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mni_o30 o30 inner_o30 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mpi_o30 o30 inner_o30 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_o31 y_o31 t31 vdd vdd pmos W=8.800000e-08 L=2.200000e-08 AD=3.872000e-15 AS=3.872000e-15 PD=2.640000e-07 PS=2.640000e-07
+mpb_o31 inner_o31 t32 y_o31 vdd pmos W=8.800000e-08 L=2.200000e-08 AD=3.872000e-15 AS=3.872000e-15 PD=2.640000e-07 PS=2.640000e-07
+mna_o31 inner_o31 t31 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mnb_o31 inner_o31 t32 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mni_o31 o31 inner_o31 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mpi_o31 o31 inner_o31 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_c3 y_c3 o30 vdd vdd pmos W=8.800000e-08 L=2.200000e-08 AD=3.872000e-15 AS=3.872000e-15 PD=2.640000e-07 PS=2.640000e-07
+mpb_c3 inner_c3 o31 y_c3 vdd pmos W=8.800000e-08 L=2.200000e-08 AD=3.872000e-15 AS=3.872000e-15 PD=2.640000e-07 PS=2.640000e-07
+mna_c3 inner_c3 o30 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mnb_c3 inner_c3 o31 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mni_c3 c3 inner_c3 0 0 nmos W=2.200000e-08 L=2.200000e-08 AD=9.680000e-16 AS=9.680000e-16 PD=1.320000e-07 PS=1.320000e-07
+mpi_c3 c3 inner_c3 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_s0x1 s0x1 cin x_s0x1 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_s0x1 x_s0x1 p0 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_s0x1 s0x1 p0 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_s0x1 s0x1 cin vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_s0x2 s0x2 s0x1 x_s0x2 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_s0x2 x_s0x2 p0 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_s0x2 s0x2 p0 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_s0x2 s0x2 s0x1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_s0x3 s0x3 s0x1 x_s0x3 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_s0x3 x_s0x3 cin 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_s0x3 s0x3 cin vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_s0x3 s0x3 s0x1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_s0x4 s0 s0x3 x_s0x4 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_s0x4 x_s0x4 s0x2 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_s0x4 s0 s0x2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_s0x4 s0 s0x3 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_s1x1 s1x1 c1 x_s1x1 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_s1x1 x_s1x1 p1 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_s1x1 s1x1 p1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_s1x1 s1x1 c1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_s1x2 s1x2 s1x1 x_s1x2 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_s1x2 x_s1x2 p1 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_s1x2 s1x2 p1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_s1x2 s1x2 s1x1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_s1x3 s1x3 s1x1 x_s1x3 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_s1x3 x_s1x3 c1 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_s1x3 s1x3 c1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_s1x3 s1x3 s1x1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_s1x4 s1 s1x3 x_s1x4 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_s1x4 x_s1x4 s1x2 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_s1x4 s1 s1x2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_s1x4 s1 s1x3 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_s2x1 s2x1 c2 x_s2x1 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_s2x1 x_s2x1 p2 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_s2x1 s2x1 p2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_s2x1 s2x1 c2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_s2x2 s2x2 s2x1 x_s2x2 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_s2x2 x_s2x2 p2 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_s2x2 s2x2 p2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_s2x2 s2x2 s2x1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_s2x3 s2x3 s2x1 x_s2x3 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_s2x3 x_s2x3 c2 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_s2x3 s2x3 c2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_s2x3 s2x3 s2x1 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mnb_s2x4 s2 s2x3 x_s2x4 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mna_s2x4 x_s2x4 s2x2 0 0 nmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpa_s2x4 s2 s2x2 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+mpb_s2x4 s2 s2x3 vdd vdd pmos W=4.400000e-08 L=2.200000e-08 AD=1.936000e-15 AS=1.936000e-15 PD=1.760000e-07 PS=1.760000e-07
+v_vdd vdd 0 1.000000000
+v_a0 a0 0 0.000000000
+v_a1 a1 0 0.000000000
+v_a2 a2 0 0.000000000
+v_b0 b0 0 0.000000000
+v_b1 b1 0 0.000000000
+v_b2 b2 0 0.000000000
+v_cin cin 0 0.000000000
+
+.control
+set numdgt=12
+set num_threads=1
+op
+let mpa_p0x1_fwd = @mpa_p0x1[vds] ge 0
+let mpa_p0x1_id = -(mpa_p0x1_fwd * (@mpa_p0x1[id] + @mpa_p0x1[isub] - @mpa_p0x1[igcd]) - (1 - mpa_p0x1_fwd) * (@mpa_p0x1[id] + @mpa_p0x1[igcs]) + @mpa_p0x1[igidl] - @mpa_p0x1[ibd] - @mpa_p0x1[igd])
+let mpa_p0x1_ig = -(@mpa_p0x1[igs] + @mpa_p0x1[igd] + @mpa_p0x1[igcs] + @mpa_p0x1[igcd] + @mpa_p0x1[igb])
+let mpa_p0x1_ib = -(@mpa_p0x1[ibd] + @mpa_p0x1[ibs] - @mpa_p0x1[igidl] - @mpa_p0x1[igisl] - @mpa_p0x1[isub] - @mpa_p0x1[igb])
+let mpa_p0x1_is = -(mpa_p0x1_id + mpa_p0x1_ig + mpa_p0x1_ib)
+let mpb_p0x1_fwd = @mpb_p0x1[vds] ge 0
+let mpb_p0x1_id = -(mpb_p0x1_fwd * (@mpb_p0x1[id] + @mpb_p0x1[isub] - @mpb_p0x1[igcd]) - (1 - mpb_p0x1_fwd) * (@mpb_p0x1[id] + @mpb_p0x1[igcs]) + @mpb_p0x1[igidl] - @mpb_p0x1[ibd] - @mpb_p0x1[igd])
+let mpb_p0x1_ig = -(@mpb_p0x1[igs] + @mpb_p0x1[igd] + @mpb_p0x1[igcs] + @mpb_p0x1[igcd] + @mpb_p0x1[igb])
+let mpb_p0x1_ib = -(@mpb_p0x1[ibd] + @mpb_p0x1[ibs] - @mpb_p0x1[igidl] - @mpb_p0x1[igisl] - @mpb_p0x1[isub] - @mpb_p0x1[igb])
+let mpb_p0x1_is = -(mpb_p0x1_id + mpb_p0x1_ig + mpb_p0x1_ib)
+let mpa_p0x2_fwd = @mpa_p0x2[vds] ge 0
+let mpa_p0x2_id = -(mpa_p0x2_fwd * (@mpa_p0x2[id] + @mpa_p0x2[isub] - @mpa_p0x2[igcd]) - (1 - mpa_p0x2_fwd) * (@mpa_p0x2[id] + @mpa_p0x2[igcs]) + @mpa_p0x2[igidl] - @mpa_p0x2[ibd] - @mpa_p0x2[igd])
+let mpa_p0x2_ig = -(@mpa_p0x2[igs] + @mpa_p0x2[igd] + @mpa_p0x2[igcs] + @mpa_p0x2[igcd] + @mpa_p0x2[igb])
+let mpa_p0x2_ib = -(@mpa_p0x2[ibd] + @mpa_p0x2[ibs] - @mpa_p0x2[igidl] - @mpa_p0x2[igisl] - @mpa_p0x2[isub] - @mpa_p0x2[igb])
+let mpa_p0x2_is = -(mpa_p0x2_id + mpa_p0x2_ig + mpa_p0x2_ib)
+let mpb_p0x2_fwd = @mpb_p0x2[vds] ge 0
+let mpb_p0x2_id = -(mpb_p0x2_fwd * (@mpb_p0x2[id] + @mpb_p0x2[isub] - @mpb_p0x2[igcd]) - (1 - mpb_p0x2_fwd) * (@mpb_p0x2[id] + @mpb_p0x2[igcs]) + @mpb_p0x2[igidl] - @mpb_p0x2[ibd] - @mpb_p0x2[igd])
+let mpb_p0x2_ig = -(@mpb_p0x2[igs] + @mpb_p0x2[igd] + @mpb_p0x2[igcs] + @mpb_p0x2[igcd] + @mpb_p0x2[igb])
+let mpb_p0x2_ib = -(@mpb_p0x2[ibd] + @mpb_p0x2[ibs] - @mpb_p0x2[igidl] - @mpb_p0x2[igisl] - @mpb_p0x2[isub] - @mpb_p0x2[igb])
+let mpb_p0x2_is = -(mpb_p0x2_id + mpb_p0x2_ig + mpb_p0x2_ib)
+let mpa_p0x3_fwd = @mpa_p0x3[vds] ge 0
+let mpa_p0x3_id = -(mpa_p0x3_fwd * (@mpa_p0x3[id] + @mpa_p0x3[isub] - @mpa_p0x3[igcd]) - (1 - mpa_p0x3_fwd) * (@mpa_p0x3[id] + @mpa_p0x3[igcs]) + @mpa_p0x3[igidl] - @mpa_p0x3[ibd] - @mpa_p0x3[igd])
+let mpa_p0x3_ig = -(@mpa_p0x3[igs] + @mpa_p0x3[igd] + @mpa_p0x3[igcs] + @mpa_p0x3[igcd] + @mpa_p0x3[igb])
+let mpa_p0x3_ib = -(@mpa_p0x3[ibd] + @mpa_p0x3[ibs] - @mpa_p0x3[igidl] - @mpa_p0x3[igisl] - @mpa_p0x3[isub] - @mpa_p0x3[igb])
+let mpa_p0x3_is = -(mpa_p0x3_id + mpa_p0x3_ig + mpa_p0x3_ib)
+let mpb_p0x3_fwd = @mpb_p0x3[vds] ge 0
+let mpb_p0x3_id = -(mpb_p0x3_fwd * (@mpb_p0x3[id] + @mpb_p0x3[isub] - @mpb_p0x3[igcd]) - (1 - mpb_p0x3_fwd) * (@mpb_p0x3[id] + @mpb_p0x3[igcs]) + @mpb_p0x3[igidl] - @mpb_p0x3[ibd] - @mpb_p0x3[igd])
+let mpb_p0x3_ig = -(@mpb_p0x3[igs] + @mpb_p0x3[igd] + @mpb_p0x3[igcs] + @mpb_p0x3[igcd] + @mpb_p0x3[igb])
+let mpb_p0x3_ib = -(@mpb_p0x3[ibd] + @mpb_p0x3[ibs] - @mpb_p0x3[igidl] - @mpb_p0x3[igisl] - @mpb_p0x3[isub] - @mpb_p0x3[igb])
+let mpb_p0x3_is = -(mpb_p0x3_id + mpb_p0x3_ig + mpb_p0x3_ib)
+let mpa_p0x4_fwd = @mpa_p0x4[vds] ge 0
+let mpa_p0x4_id = -(mpa_p0x4_fwd * (@mpa_p0x4[id] + @mpa_p0x4[isub] - @mpa_p0x4[igcd]) - (1 - mpa_p0x4_fwd) * (@mpa_p0x4[id] + @mpa_p0x4[igcs]) + @mpa_p0x4[igidl] - @mpa_p0x4[ibd] - @mpa_p0x4[igd])
+let mpa_p0x4_ig = -(@mpa_p0x4[igs] + @mpa_p0x4[igd] + @mpa_p0x4[igcs] + @mpa_p0x4[igcd] + @mpa_p0x4[igb])
+let mpa_p0x4_ib = -(@mpa_p0x4[ibd] + @mpa_p0x4[ibs] - @mpa_p0x4[igidl] - @mpa_p0x4[igisl] - @mpa_p0x4[isub] - @mpa_p0x4[igb])
+let mpa_p0x4_is = -(mpa_p0x4_id + mpa_p0x4_ig + mpa_p0x4_ib)
+let mpb_p0x4_fwd = @mpb_p0x4[vds] ge 0
+let mpb_p0x4_id = -(mpb_p0x4_fwd * (@mpb_p0x4[id] + @mpb_p0x4[isub] - @mpb_p0x4[igcd]) - (1 - mpb_p0x4_fwd) * (@mpb_p0x4[id] + @mpb_p0x4[igcs]) + @mpb_p0x4[igidl] - @mpb_p0x4[ibd] - @mpb_p0x4[igd])
+let mpb_p0x4_ig = -(@mpb_p0x4[igs] + @mpb_p0x4[igd] + @mpb_p0x4[igcs] + @mpb_p0x4[igcd] + @mpb_p0x4[igb])
+let mpb_p0x4_ib = -(@mpb_p0x4[ibd] + @mpb_p0x4[ibs] - @mpb_p0x4[igidl] - @mpb_p0x4[igisl] - @mpb_p0x4[isub] - @mpb_p0x4[igb])
+let mpb_p0x4_is = -(mpb_p0x4_id + mpb_p0x4_ig + mpb_p0x4_ib)
+let mpa_p1x1_fwd = @mpa_p1x1[vds] ge 0
+let mpa_p1x1_id = -(mpa_p1x1_fwd * (@mpa_p1x1[id] + @mpa_p1x1[isub] - @mpa_p1x1[igcd]) - (1 - mpa_p1x1_fwd) * (@mpa_p1x1[id] + @mpa_p1x1[igcs]) + @mpa_p1x1[igidl] - @mpa_p1x1[ibd] - @mpa_p1x1[igd])
+let mpa_p1x1_ig = -(@mpa_p1x1[igs] + @mpa_p1x1[igd] + @mpa_p1x1[igcs] + @mpa_p1x1[igcd] + @mpa_p1x1[igb])
+let mpa_p1x1_ib = -(@mpa_p1x1[ibd] + @mpa_p1x1[ibs] - @mpa_p1x1[igidl] - @mpa_p1x1[igisl] - @mpa_p1x1[isub] - @mpa_p1x1[igb])
+let mpa_p1x1_is = -(mpa_p1x1_id + mpa_p1x1_ig + mpa_p1x1_ib)
+let mpb_p1x1_fwd = @mpb_p1x1[vds] ge 0
+let mpb_p1x1_id = -(mpb_p1x1_fwd * (@mpb_p1x1[id] + @mpb_p1x1[isub] - @mpb_p1x1[igcd]) - (1 - mpb_p1x1_fwd) * (@mpb_p1x1[id] + @mpb_p1x1[igcs]) + @mpb_p1x1[igidl] - @mpb_p1x1[ibd] - @mpb_p1x1[igd])
+let mpb_p1x1_ig = -(@mpb_p1x1[igs] + @mpb_p1x1[igd] + @mpb_p1x1[igcs] + @mpb_p1x1[igcd] + @mpb_p1x1[igb])
+let mpb_p1x1_ib = -(@mpb_p1x1[ibd] + @mpb_p1x1[ibs] - @mpb_p1x1[igidl] - @mpb_p1x1[igisl] - @mpb_p1x1[isub] - @mpb_p1x1[igb])
+let mpb_p1x1_is = -(mpb_p1x1_id + mpb_p1x1_ig + mpb_p1x1_ib)
+let mpa_p1x2_fwd = @mpa_p1x2[vds] ge 0
+let mpa_p1x2_id = -(mpa_p1x2_fwd * (@mpa_p1x2[id] + @mpa_p1x2[isub] - @mpa_p1x2[igcd]) - (1 - mpa_p1x2_fwd) * (@mpa_p1x2[id] + @mpa_p1x2[igcs]) + @mpa_p1x2[igidl] - @mpa_p1x2[ibd] - @mpa_p1x2[igd])
+let mpa_p1x2_ig = -(@mpa_p1x2[igs] + @mpa_p1x2[igd] + @mpa_p1x2[igcs] + @mpa_p1x2[igcd] + @mpa_p1x2[igb])
+let mpa_p1x2_ib = -(@mpa_p1x2[ibd] + @mpa_p1x2[ibs] - @mpa_p1x2[igidl] - @mpa_p1x2[igisl] - @mpa_p1x2[isub] - @mpa_p1x2[igb])
+let mpa_p1x2_is = -(mpa_p1x2_id + mpa_p1x2_ig + mpa_p1x2_ib)
+let mpb_p1x2_fwd = @mpb_p1x2[vds] ge 0
+let mpb_p1x2_id = -(mpb_p1x2_fwd * (@mpb_p1x2[id] + @mpb_p1x2[isub] - @mpb_p1x2[igcd]) - (1 - mpb_p1x2_fwd) * (@mpb_p1x2[id] + @mpb_p1x2[igcs]) + @mpb_p1x2[igidl] - @mpb_p1x2[ibd] - @mpb_p1x2[igd])
+let mpb_p1x2_ig = -(@mpb_p1x2[igs] + @mpb_p1x2[igd] + @mpb_p1x2[igcs] + @mpb_p1x2[igcd] + @mpb_p1x2[igb])
+let mpb_p1x2_ib = -(@mpb_p1x2[ibd] + @mpb_p1x2[ibs] - @mpb_p1x2[igidl] - @mpb_p1x2[igisl] - @mpb_p1x2[isub] - @mpb_p1x2[igb])
+let mpb_p1x2_is = -(mpb_p1x2_id + mpb_p1x2_ig + mpb_p1x2_ib)
+let mpa_p1x3_fwd = @mpa_p1x3[vds] ge 0
+let mpa_p1x3_id = -(mpa_p1x3_fwd * (@mpa_p1x3[id] + @mpa_p1x3[isub] - @mpa_p1x3[igcd]) - (1 - mpa_p1x3_fwd) * (@mpa_p1x3[id] + @mpa_p1x3[igcs]) + @mpa_p1x3[igidl] - @mpa_p1x3[ibd] - @mpa_p1x3[igd])
+let mpa_p1x3_ig = -(@mpa_p1x3[igs] + @mpa_p1x3[igd] + @mpa_p1x3[igcs] + @mpa_p1x3[igcd] + @mpa_p1x3[igb])
+let mpa_p1x3_ib = -(@mpa_p1x3[ibd] + @mpa_p1x3[ibs] - @mpa_p1x3[igidl] - @mpa_p1x3[igisl] - @mpa_p1x3[isub] - @mpa_p1x3[igb])
+let mpa_p1x3_is = -(mpa_p1x3_id + mpa_p1x3_ig + mpa_p1x3_ib)
+let mpb_p1x3_fwd = @mpb_p1x3[vds] ge 0
+let mpb_p1x3_id = -(mpb_p1x3_fwd * (@mpb_p1x3[id] + @mpb_p1x3[isub] - @mpb_p1x3[igcd]) - (1 - mpb_p1x3_fwd) * (@mpb_p1x3[id] + @mpb_p1x3[igcs]) + @mpb_p1x3[igidl] - @mpb_p1x3[ibd] - @mpb_p1x3[igd])
+let mpb_p1x3_ig = -(@mpb_p1x3[igs] + @mpb_p1x3[igd] + @mpb_p1x3[igcs] + @mpb_p1x3[igcd] + @mpb_p1x3[igb])
+let mpb_p1x3_ib = -(@mpb_p1x3[ibd] + @mpb_p1x3[ibs] - @mpb_p1x3[igidl] - @mpb_p1x3[igisl] - @mpb_p1x3[isub] - @mpb_p1x3[igb])
+let mpb_p1x3_is = -(mpb_p1x3_id + mpb_p1x3_ig + mpb_p1x3_ib)
+let mpa_p1x4_fwd = @mpa_p1x4[vds] ge 0
+let mpa_p1x4_id = -(mpa_p1x4_fwd * (@mpa_p1x4[id] + @mpa_p1x4[isub] - @mpa_p1x4[igcd]) - (1 - mpa_p1x4_fwd) * (@mpa_p1x4[id] + @mpa_p1x4[igcs]) + @mpa_p1x4[igidl] - @mpa_p1x4[ibd] - @mpa_p1x4[igd])
+let mpa_p1x4_ig = -(@mpa_p1x4[igs] + @mpa_p1x4[igd] + @mpa_p1x4[igcs] + @mpa_p1x4[igcd] + @mpa_p1x4[igb])
+let mpa_p1x4_ib = -(@mpa_p1x4[ibd] + @mpa_p1x4[ibs] - @mpa_p1x4[igidl] - @mpa_p1x4[igisl] - @mpa_p1x4[isub] - @mpa_p1x4[igb])
+let mpa_p1x4_is = -(mpa_p1x4_id + mpa_p1x4_ig + mpa_p1x4_ib)
+let mpb_p1x4_fwd = @mpb_p1x4[vds] ge 0
+let mpb_p1x4_id = -(mpb_p1x4_fwd * (@mpb_p1x4[id] + @mpb_p1x4[isub] - @mpb_p1x4[igcd]) - (1 - mpb_p1x4_fwd) * (@mpb_p1x4[id] + @mpb_p1x4[igcs]) + @mpb_p1x4[igidl] - @mpb_p1x4[ibd] - @mpb_p1x4[igd])
+let mpb_p1x4_ig = -(@mpb_p1x4[igs] + @mpb_p1x4[igd] + @mpb_p1x4[igcs] + @mpb_p1x4[igcd] + @mpb_p1x4[igb])
+let mpb_p1x4_ib = -(@mpb_p1x4[ibd] + @mpb_p1x4[ibs] - @mpb_p1x4[igidl] - @mpb_p1x4[igisl] - @mpb_p1x4[isub] - @mpb_p1x4[igb])
+let mpb_p1x4_is = -(mpb_p1x4_id + mpb_p1x4_ig + mpb_p1x4_ib)
+let mpa_p2x1_fwd = @mpa_p2x1[vds] ge 0
+let mpa_p2x1_id = -(mpa_p2x1_fwd * (@mpa_p2x1[id] + @mpa_p2x1[isub] - @mpa_p2x1[igcd]) - (1 - mpa_p2x1_fwd) * (@mpa_p2x1[id] + @mpa_p2x1[igcs]) + @mpa_p2x1[igidl] - @mpa_p2x1[ibd] - @mpa_p2x1[igd])
+let mpa_p2x1_ig = -(@mpa_p2x1[igs] + @mpa_p2x1[igd] + @mpa_p2x1[igcs] + @mpa_p2x1[igcd] + @mpa_p2x1[igb])
+let mpa_p2x1_ib = -(@mpa_p2x1[ibd] + @mpa_p2x1[ibs] - @mpa_p2x1[igidl] - @mpa_p2x1[igisl] - @mpa_p2x1[isub] - @mpa_p2x1[igb])
+let mpa_p2x1_is = -(mpa_p2x1_id + mpa_p2x1_ig + mpa_p2x1_ib)
+let mpb_p2x1_fwd = @mpb_p2x1[vds] ge 0
+let mpb_p2x1_id = -(mpb_p2x1_fwd * (@mpb_p2x1[id] + @mpb_p2x1[isub] - @mpb_p2x1[igcd]) - (1 - mpb_p2x1_fwd) * (@mpb_p2x1[id] + @mpb_p2x1[igcs]) + @mpb_p2x1[igidl] - @mpb_p2x1[ibd] - @mpb_p2x1[igd])
+let mpb_p2x1_ig = -(@mpb_p2x1[igs] + @mpb_p2x1[igd] + @mpb_p2x1[igcs] + @mpb_p2x1[igcd] + @mpb_p2x1[igb])
+let mpb_p2x1_ib = -(@mpb_p2x1[ibd] + @mpb_p2x1[ibs] - @mpb_p2x1[igidl] - @mpb_p2x1[igisl] - @mpb_p2x1[isub] - @mpb_p2x1[igb])
+let mpb_p2x1_is = -(mpb_p2x1_id + mpb_p2x1_ig + mpb_p2x1_ib)
+let mpa_p2x2_fwd = @mpa_p2x2[vds] ge 0
+let mpa_p2x2_id = -(mpa_p2x2_fwd * (@mpa_p2x2[id] + @mpa_p2x2[isub] - @mpa_p2x2[igcd]) - (1 - mpa_p2x2_fwd) * (@mpa_p2x2[id] + @mpa_p2x2[igcs]) + @mpa_p2x2[igidl] - @mpa_p2x2[ibd] - @mpa_p2x2[igd])
+let mpa_p2x2_ig = -(@mpa_p2x2[igs] + @mpa_p2x2[igd] + @mpa_p2x2[igcs] + @mpa_p2x2[igcd] + @mpa_p2x2[igb])
+let mpa_p2x2_ib = -(@mpa_p2x2[ibd] + @mpa_p2x2[ibs] - @mpa_p2x2[igidl] - @mpa_p2x2[igisl] - @mpa_p2x2[isub] - @mpa_p2x2[igb])
+let mpa_p2x2_is = -(mpa_p2x2_id + mpa_p2x2_ig + mpa_p2x2_ib)
+let mpb_p2x2_fwd = @mpb_p2x2[vds] ge 0
+let mpb_p2x2_id = -(mpb_p2x2_fwd * (@mpb_p2x2[id] + @mpb_p2x2[isub] - @mpb_p2x2[igcd]) - (1 - mpb_p2x2_fwd) * (@mpb_p2x2[id] + @mpb_p2x2[igcs]) + @mpb_p2x2[igidl] - @mpb_p2x2[ibd] - @mpb_p2x2[igd])
+let mpb_p2x2_ig = -(@mpb_p2x2[igs] + @mpb_p2x2[igd] + @mpb_p2x2[igcs] + @mpb_p2x2[igcd] + @mpb_p2x2[igb])
+let mpb_p2x2_ib = -(@mpb_p2x2[ibd] + @mpb_p2x2[ibs] - @mpb_p2x2[igidl] - @mpb_p2x2[igisl] - @mpb_p2x2[isub] - @mpb_p2x2[igb])
+let mpb_p2x2_is = -(mpb_p2x2_id + mpb_p2x2_ig + mpb_p2x2_ib)
+let mpa_p2x3_fwd = @mpa_p2x3[vds] ge 0
+let mpa_p2x3_id = -(mpa_p2x3_fwd * (@mpa_p2x3[id] + @mpa_p2x3[isub] - @mpa_p2x3[igcd]) - (1 - mpa_p2x3_fwd) * (@mpa_p2x3[id] + @mpa_p2x3[igcs]) + @mpa_p2x3[igidl] - @mpa_p2x3[ibd] - @mpa_p2x3[igd])
+let mpa_p2x3_ig = -(@mpa_p2x3[igs] + @mpa_p2x3[igd] + @mpa_p2x3[igcs] + @mpa_p2x3[igcd] + @mpa_p2x3[igb])
+let mpa_p2x3_ib = -(@mpa_p2x3[ibd] + @mpa_p2x3[ibs] - @mpa_p2x3[igidl] - @mpa_p2x3[igisl] - @mpa_p2x3[isub] - @mpa_p2x3[igb])
+let mpa_p2x3_is = -(mpa_p2x3_id + mpa_p2x3_ig + mpa_p2x3_ib)
+let mpb_p2x3_fwd = @mpb_p2x3[vds] ge 0
+let mpb_p2x3_id = -(mpb_p2x3_fwd * (@mpb_p2x3[id] + @mpb_p2x3[isub] - @mpb_p2x3[igcd]) - (1 - mpb_p2x3_fwd) * (@mpb_p2x3[id] + @mpb_p2x3[igcs]) + @mpb_p2x3[igidl] - @mpb_p2x3[ibd] - @mpb_p2x3[igd])
+let mpb_p2x3_ig = -(@mpb_p2x3[igs] + @mpb_p2x3[igd] + @mpb_p2x3[igcs] + @mpb_p2x3[igcd] + @mpb_p2x3[igb])
+let mpb_p2x3_ib = -(@mpb_p2x3[ibd] + @mpb_p2x3[ibs] - @mpb_p2x3[igidl] - @mpb_p2x3[igisl] - @mpb_p2x3[isub] - @mpb_p2x3[igb])
+let mpb_p2x3_is = -(mpb_p2x3_id + mpb_p2x3_ig + mpb_p2x3_ib)
+let mpa_p2x4_fwd = @mpa_p2x4[vds] ge 0
+let mpa_p2x4_id = -(mpa_p2x4_fwd * (@mpa_p2x4[id] + @mpa_p2x4[isub] - @mpa_p2x4[igcd]) - (1 - mpa_p2x4_fwd) * (@mpa_p2x4[id] + @mpa_p2x4[igcs]) + @mpa_p2x4[igidl] - @mpa_p2x4[ibd] - @mpa_p2x4[igd])
+let mpa_p2x4_ig = -(@mpa_p2x4[igs] + @mpa_p2x4[igd] + @mpa_p2x4[igcs] + @mpa_p2x4[igcd] + @mpa_p2x4[igb])
+let mpa_p2x4_ib = -(@mpa_p2x4[ibd] + @mpa_p2x4[ibs] - @mpa_p2x4[igidl] - @mpa_p2x4[igisl] - @mpa_p2x4[isub] - @mpa_p2x4[igb])
+let mpa_p2x4_is = -(mpa_p2x4_id + mpa_p2x4_ig + mpa_p2x4_ib)
+let mpb_p2x4_fwd = @mpb_p2x4[vds] ge 0
+let mpb_p2x4_id = -(mpb_p2x4_fwd * (@mpb_p2x4[id] + @mpb_p2x4[isub] - @mpb_p2x4[igcd]) - (1 - mpb_p2x4_fwd) * (@mpb_p2x4[id] + @mpb_p2x4[igcs]) + @mpb_p2x4[igidl] - @mpb_p2x4[ibd] - @mpb_p2x4[igd])
+let mpb_p2x4_ig = -(@mpb_p2x4[igs] + @mpb_p2x4[igd] + @mpb_p2x4[igcs] + @mpb_p2x4[igcd] + @mpb_p2x4[igb])
+let mpb_p2x4_ib = -(@mpb_p2x4[ibd] + @mpb_p2x4[ibs] - @mpb_p2x4[igidl] - @mpb_p2x4[igisl] - @mpb_p2x4[isub] - @mpb_p2x4[igb])
+let mpb_p2x4_is = -(mpb_p2x4_id + mpb_p2x4_ig + mpb_p2x4_ib)
+let mpa_g0_fwd = @mpa_g0[vds] ge 0
+let mpa_g0_id = -(mpa_g0_fwd * (@mpa_g0[id] + @mpa_g0[isub] - @mpa_g0[igcd]) - (1 - mpa_g0_fwd) * (@mpa_g0[id] + @mpa_g0[igcs]) + @mpa_g0[igidl] - @mpa_g0[ibd] - @mpa_g0[igd])
+let mpa_g0_ig = -(@mpa_g0[igs] + @mpa_g0[igd] + @mpa_g0[igcs] + @mpa_g0[igcd] + @mpa_g0[igb])
+let mpa_g0_ib = -(@mpa_g0[ibd] + @mpa_g0[ibs] - @mpa_g0[igidl] - @mpa_g0[igisl] - @mpa_g0[isub] - @mpa_g0[igb])
+let mpa_g0_is = -(mpa_g0_id + mpa_g0_ig + mpa_g0_ib)
+let mpb_g0_fwd = @mpb_g0[vds] ge 0
+let mpb_g0_id = -(mpb_g0_fwd * (@mpb_g0[id] + @mpb_g0[isub] - @mpb_g0[igcd]) - (1 - mpb_g0_fwd) * (@mpb_g0[id] + @mpb_g0[igcs]) + @mpb_g0[igidl] - @mpb_g0[ibd] - @mpb_g0[igd])
+let mpb_g0_ig = -(@mpb_g0[igs] + @mpb_g0[igd] + @mpb_g0[igcs] + @mpb_g0[igcd] + @mpb_g0[igb])
+let mpb_g0_ib = -(@mpb_g0[ibd] + @mpb_g0[ibs] - @mpb_g0[igidl] - @mpb_g0[igisl] - @mpb_g0[isub] - @mpb_g0[igb])
+let mpb_g0_is = -(mpb_g0_id + mpb_g0_ig + mpb_g0_ib)
+let mpi_g0_fwd = @mpi_g0[vds] ge 0
+let mpi_g0_id = -(mpi_g0_fwd * (@mpi_g0[id] + @mpi_g0[isub] - @mpi_g0[igcd]) - (1 - mpi_g0_fwd) * (@mpi_g0[id] + @mpi_g0[igcs]) + @mpi_g0[igidl] - @mpi_g0[ibd] - @mpi_g0[igd])
+let mpi_g0_ig = -(@mpi_g0[igs] + @mpi_g0[igd] + @mpi_g0[igcs] + @mpi_g0[igcd] + @mpi_g0[igb])
+let mpi_g0_ib = -(@mpi_g0[ibd] + @mpi_g0[ibs] - @mpi_g0[igidl] - @mpi_g0[igisl] - @mpi_g0[isub] - @mpi_g0[igb])
+let mpi_g0_is = -(mpi_g0_id + mpi_g0_ig + mpi_g0_ib)
+let mpa_g1_fwd = @mpa_g1[vds] ge 0
+let mpa_g1_id = -(mpa_g1_fwd * (@mpa_g1[id] + @mpa_g1[isub] - @mpa_g1[igcd]) - (1 - mpa_g1_fwd) * (@mpa_g1[id] + @mpa_g1[igcs]) + @mpa_g1[igidl] - @mpa_g1[ibd] - @mpa_g1[igd])
+let mpa_g1_ig = -(@mpa_g1[igs] + @mpa_g1[igd] + @mpa_g1[igcs] + @mpa_g1[igcd] + @mpa_g1[igb])
+let mpa_g1_ib = -(@mpa_g1[ibd] + @mpa_g1[ibs] - @mpa_g1[igidl] - @mpa_g1[igisl] - @mpa_g1[isub] - @mpa_g1[igb])
+let mpa_g1_is = -(mpa_g1_id + mpa_g1_ig + mpa_g1_ib)
+let mpb_g1_fwd = @mpb_g1[vds] ge 0
+let mpb_g1_id = -(mpb_g1_fwd * (@mpb_g1[id] + @mpb_g1[isub] - @mpb_g1[igcd]) - (1 - mpb_g1_fwd) * (@mpb_g1[id] + @mpb_g1[igcs]) + @mpb_g1[igidl] - @mpb_g1[ibd] - @mpb_g1[igd])
+let mpb_g1_ig = -(@mpb_g1[igs] + @mpb_g1[igd] + @mpb_g1[igcs] + @mpb_g1[igcd] + @mpb_g1[igb])
+let mpb_g1_ib = -(@mpb_g1[ibd] + @mpb_g1[ibs] - @mpb_g1[igidl] - @mpb_g1[igisl] - @mpb_g1[isub] - @mpb_g1[igb])
+let mpb_g1_is = -(mpb_g1_id + mpb_g1_ig + mpb_g1_ib)
+let mpi_g1_fwd = @mpi_g1[vds] ge 0
+let mpi_g1_id = -(mpi_g1_fwd * (@mpi_g1[id] + @mpi_g1[isub] - @mpi_g1[igcd]) - (1 - mpi_g1_fwd) * (@mpi_g1[id] + @mpi_g1[igcs]) + @mpi_g1[igidl] - @mpi_g1[ibd] - @mpi_g1[igd])
+let mpi_g1_ig = -(@mpi_g1[igs] + @mpi_g1[igd] + @mpi_g1[igcs] + @mpi_g1[igcd] + @mpi_g1[igb])
+let mpi_g1_ib = -(@mpi_g1[ibd] + @mpi_g1[ibs] - @mpi_g1[igidl] - @mpi_g1[igisl] - @mpi_g1[isub] - @mpi_g1[igb])
+let mpi_g1_is = -(mpi_g1_id + mpi_g1_ig + mpi_g1_ib)
+let mpa_g2_fwd = @mpa_g2[vds] ge 0
+let mpa_g2_id = -(mpa_g2_fwd * (@mpa_g2[id] + @mpa_g2[isub] - @mpa_g2[igcd]) - (1 - mpa_g2_fwd) * (@mpa_g2[id] + @mpa_g2[igcs]) + @mpa_g2[igidl] - @mpa_g2[ibd] - @mpa_g2[igd])
+let mpa_g2_ig = -(@mpa_g2[igs] + @mpa_g2[igd] + @mpa_g2[igcs] + @mpa_g2[igcd] + @mpa_g2[igb])
+let mpa_g2_ib = -(@mpa_g2[ibd] + @mpa_g2[ibs] - @mpa_g2[igidl] - @mpa_g2[igisl] - @mpa_g2[isub] - @mpa_g2[igb])
+let mpa_g2_is = -(mpa_g2_id + mpa_g2_ig + mpa_g2_ib)
+let mpb_g2_fwd = @mpb_g2[vds] ge 0
+let mpb_g2_id = -(mpb_g2_fwd * (@mpb_g2[id] + @mpb_g2[isub] - @mpb_g2[igcd]) - (1 - mpb_g2_fwd) * (@mpb_g2[id] + @mpb_g2[igcs]) + @mpb_g2[igidl] - @mpb_g2[ibd] - @mpb_g2[igd])
+let mpb_g2_ig = -(@mpb_g2[igs] + @mpb_g2[igd] + @mpb_g2[igcs] + @mpb_g2[igcd] + @mpb_g2[igb])
+let mpb_g2_ib = -(@mpb_g2[ibd] + @mpb_g2[ibs] - @mpb_g2[igidl] - @mpb_g2[igisl] - @mpb_g2[isub] - @mpb_g2[igb])
+let mpb_g2_is = -(mpb_g2_id + mpb_g2_ig + mpb_g2_ib)
+let mpi_g2_fwd = @mpi_g2[vds] ge 0
+let mpi_g2_id = -(mpi_g2_fwd * (@mpi_g2[id] + @mpi_g2[isub] - @mpi_g2[igcd]) - (1 - mpi_g2_fwd) * (@mpi_g2[id] + @mpi_g2[igcs]) + @mpi_g2[igidl] - @mpi_g2[ibd] - @mpi_g2[igd])
+let mpi_g2_ig = -(@mpi_g2[igs] + @mpi_g2[igd] + @mpi_g2[igcs] + @mpi_g2[igcd] + @mpi_g2[igb])
+let mpi_g2_ib = -(@mpi_g2[ibd] + @mpi_g2[ibs] - @mpi_g2[igidl] - @mpi_g2[igisl] - @mpi_g2[isub] - @mpi_g2[igb])
+let mpi_g2_is = -(mpi_g2_id + mpi_g2_ig + mpi_g2_ib)
+let mpa_t10_fwd = @mpa_t10[vds] ge 0
+let mpa_t10_id = -(mpa_t10_fwd * (@mpa_t10[id] + @mpa_t10[isub] - @mpa_t10[igcd]) - (1 - mpa_t10_fwd) * (@mpa_t10[id] + @mpa_t10[igcs]) + @mpa_t10[igidl] - @mpa_t10[ibd] - @mpa_t10[igd])
+let mpa_t10_ig = -(@mpa_t10[igs] + @mpa_t10[igd] + @mpa_t10[igcs] + @mpa_t10[igcd] + @mpa_t10[igb])
+let mpa_t10_ib = -(@mpa_t10[ibd] + @mpa_t10[ibs] - @mpa_t10[igidl] - @mpa_t10[igisl] - @mpa_t10[isub] - @mpa_t10[igb])
+let mpa_t10_is = -(mpa_t10_id + mpa_t10_ig + mpa_t10_ib)
+let mpb_t10_fwd = @mpb_t10[vds] ge 0
+let mpb_t10_id = -(mpb_t10_fwd * (@mpb_t10[id] + @mpb_t10[isub] - @mpb_t10[igcd]) - (1 - mpb_t10_fwd) * (@mpb_t10[id] + @mpb_t10[igcs]) + @mpb_t10[igidl] - @mpb_t10[ibd] - @mpb_t10[igd])
+let mpb_t10_ig = -(@mpb_t10[igs] + @mpb_t10[igd] + @mpb_t10[igcs] + @mpb_t10[igcd] + @mpb_t10[igb])
+let mpb_t10_ib = -(@mpb_t10[ibd] + @mpb_t10[ibs] - @mpb_t10[igidl] - @mpb_t10[igisl] - @mpb_t10[isub] - @mpb_t10[igb])
+let mpb_t10_is = -(mpb_t10_id + mpb_t10_ig + mpb_t10_ib)
+let mpi_t10_fwd = @mpi_t10[vds] ge 0
+let mpi_t10_id = -(mpi_t10_fwd * (@mpi_t10[id] + @mpi_t10[isub] - @mpi_t10[igcd]) - (1 - mpi_t10_fwd) * (@mpi_t10[id] + @mpi_t10[igcs]) + @mpi_t10[igidl] - @mpi_t10[ibd] - @mpi_t10[igd])
+let mpi_t10_ig = -(@mpi_t10[igs] + @mpi_t10[igd] + @mpi_t10[igcs] + @mpi_t10[igcd] + @mpi_t10[igb])
+let mpi_t10_ib = -(@mpi_t10[ibd] + @mpi_t10[ibs] - @mpi_t10[igidl] - @mpi_t10[igisl] - @mpi_t10[isub] - @mpi_t10[igb])
+let mpi_t10_is = -(mpi_t10_id + mpi_t10_ig + mpi_t10_ib)
+let mpa_c1_fwd = @mpa_c1[vds] ge 0
+let mpa_c1_id = -(mpa_c1_fwd * (@mpa_c1[id] + @mpa_c1[isub] - @mpa_c1[igcd]) - (1 - mpa_c1_fwd) * (@mpa_c1[id] + @mpa_c1[igcs]) + @mpa_c1[igidl] - @mpa_c1[ibd] - @mpa_c1[igd])
+let mpa_c1_ig = -(@mpa_c1[igs] + @mpa_c1[igd] + @mpa_c1[igcs] + @mpa_c1[igcd] + @mpa_c1[igb])
+let mpa_c1_ib = -(@mpa_c1[ibd] + @mpa_c1[ibs] - @mpa_c1[igidl] - @mpa_c1[igisl] - @mpa_c1[isub] - @mpa_c1[igb])
+let mpa_c1_is = -(mpa_c1_id + mpa_c1_ig + mpa_c1_ib)
+let mpb_c1_fwd = @mpb_c1[vds] ge 0
+let mpb_c1_id = -(mpb_c1_fwd * (@mpb_c1[id] + @mpb_c1[isub] - @mpb_c1[igcd]) - (1 - mpb_c1_fwd) * (@mpb_c1[id] + @mpb_c1[igcs]) + @mpb_c1[igidl] - @mpb_c1[ibd] - @mpb_c1[igd])
+let mpb_c1_ig = -(@mpb_c1[igs] + @mpb_c1[igd] + @mpb_c1[igcs] + @mpb_c1[igcd] + @mpb_c1[igb])
+let mpb_c1_ib = -(@mpb_c1[ibd] + @mpb_c1[ibs] - @mpb_c1[igidl] - @mpb_c1[igisl] - @mpb_c1[isub] - @mpb_c1[igb])
+let mpb_c1_is = -(mpb_c1_id + mpb_c1_ig + mpb_c1_ib)
+let mpi_c1_fwd = @mpi_c1[vds] ge 0
+let mpi_c1_id = -(mpi_c1_fwd * (@mpi_c1[id] + @mpi_c1[isub] - @mpi_c1[igcd]) - (1 - mpi_c1_fwd) * (@mpi_c1[id] + @mpi_c1[igcs]) + @mpi_c1[igidl] - @mpi_c1[ibd] - @mpi_c1[igd])
+let mpi_c1_ig = -(@mpi_c1[igs] + @mpi_c1[igd] + @mpi_c1[igcs] + @mpi_c1[igcd] + @mpi_c1[igb])
+let mpi_c1_ib = -(@mpi_c1[ibd] + @mpi_c1[ibs] - @mpi_c1[igidl] - @mpi_c1[igisl] - @mpi_c1[isub] - @mpi_c1[igb])
+let mpi_c1_is = -(mpi_c1_id + mpi_c1_ig + mpi_c1_ib)
+let mpa_t20_fwd = @mpa_t20[vds] ge 0
+let mpa_t20_id = -(mpa_t20_fwd * (@mpa_t20[id] + @mpa_t20[isub] - @mpa_t20[igcd]) - (1 - mpa_t20_fwd) * (@mpa_t20[id] + @mpa_t20[igcs]) + @mpa_t20[igidl] - @mpa_t20[ibd] - @mpa_t20[igd])
+let mpa_t20_ig = -(@mpa_t20[igs] + @mpa_t20[igd] + @mpa_t20[igcs] + @mpa_t20[igcd] + @mpa_t20[igb])
+let mpa_t20_ib = -(@mpa_t20[ibd] + @mpa_t20[ibs] - @mpa_t20[igidl] - @mpa_t20[igisl] - @mpa_t20[isub] - @mpa_t20[igb])
+let mpa_t20_is = -(mpa_t20_id + mpa_t20_ig + mpa_t20_ib)
+let mpb_t20_fwd = @mpb_t20[vds] ge 0
+let mpb_t20_id = -(mpb_t20_fwd * (@mpb_t20[id] + @mpb_t20[isub] - @mpb_t20[igcd]) - (1 - mpb_t20_fwd) * (@mpb_t20[id] + @mpb_t20[igcs]) + @mpb_t20[igidl] - @mpb_t20[ibd] - @mpb_t20[igd])
+let mpb_t20_ig = -(@mpb_t20[igs] + @mpb_t20[igd] + @mpb_t20[igcs] + @mpb_t20[igcd] + @mpb_t20[igb])
+let mpb_t20_ib = -(@mpb_t20[ibd] + @mpb_t20[ibs] - @mpb_t20[igidl] - @mpb_t20[igisl] - @mpb_t20[isub] - @mpb_t20[igb])
+let mpb_t20_is = -(mpb_t20_id + mpb_t20_ig + mpb_t20_ib)
+let mpi_t20_fwd = @mpi_t20[vds] ge 0
+let mpi_t20_id = -(mpi_t20_fwd * (@mpi_t20[id] + @mpi_t20[isub] - @mpi_t20[igcd]) - (1 - mpi_t20_fwd) * (@mpi_t20[id] + @mpi_t20[igcs]) + @mpi_t20[igidl] - @mpi_t20[ibd] - @mpi_t20[igd])
+let mpi_t20_ig = -(@mpi_t20[igs] + @mpi_t20[igd] + @mpi_t20[igcs] + @mpi_t20[igcd] + @mpi_t20[igb])
+let mpi_t20_ib = -(@mpi_t20[ibd] + @mpi_t20[ibs] - @mpi_t20[igidl] - @mpi_t20[igisl] - @mpi_t20[isub] - @mpi_t20[igb])
+let mpi_t20_is = -(mpi_t20_id + mpi_t20_ig + mpi_t20_ib)
+let mpa_p10_fwd = @mpa_p10[vds] ge 0
+let mpa_p10_id = -(mpa_p10_fwd * (@mpa_p10[id] + @mpa_p10[isub] - @mpa_p10[igcd]) - (1 - mpa_p10_fwd) * (@mpa_p10[id] + @mpa_p10[igcs]) + @mpa_p10[igidl] - @mpa_p10[ibd] - @mpa_p10[igd])
+let mpa_p10_ig = -(@mpa_p10[igs] + @mpa_p10[igd] + @mpa_p10[igcs] + @mpa_p10[igcd] + @mpa_p10[igb])
+let mpa_p10_ib = -(@mpa_p10[ibd] + @mpa_p10[ibs] - @mpa_p10[igidl] - @mpa_p10[igisl] - @mpa_p10[isub] - @mpa_p10[igb])
+let mpa_p10_is = -(mpa_p10_id + mpa_p10_ig + mpa_p10_ib)
+let mpb_p10_fwd = @mpb_p10[vds] ge 0
+let mpb_p10_id = -(mpb_p10_fwd * (@mpb_p10[id] + @mpb_p10[isub] - @mpb_p10[igcd]) - (1 - mpb_p10_fwd) * (@mpb_p10[id] + @mpb_p10[igcs]) + @mpb_p10[igidl] - @mpb_p10[ibd] - @mpb_p10[igd])
+let mpb_p10_ig = -(@mpb_p10[igs] + @mpb_p10[igd] + @mpb_p10[igcs] + @mpb_p10[igcd] + @mpb_p10[igb])
+let mpb_p10_ib = -(@mpb_p10[ibd] + @mpb_p10[ibs] - @mpb_p10[igidl] - @mpb_p10[igisl] - @mpb_p10[isub] - @mpb_p10[igb])
+let mpb_p10_is = -(mpb_p10_id + mpb_p10_ig + mpb_p10_ib)
+let mpi_p10_fwd = @mpi_p10[vds] ge 0
+let mpi_p10_id = -(mpi_p10_fwd * (@mpi_p10[id] + @mpi_p10[isub] - @mpi_p10[igcd]) - (1 - mpi_p10_fwd) * (@mpi_p10[id] + @mpi_p10[igcs]) + @mpi_p10[igidl] - @mpi_p10[ibd] - @mpi_p10[igd])
+let mpi_p10_ig = -(@mpi_p10[igs] + @mpi_p10[igd] + @mpi_p10[igcs] + @mpi_p10[igcd] + @mpi_p10[igb])
+let mpi_p10_ib = -(@mpi_p10[ibd] + @mpi_p10[ibs] - @mpi_p10[igidl] - @mpi_p10[igisl] - @mpi_p10[isub] - @mpi_p10[igb])
+let mpi_p10_is = -(mpi_p10_id + mpi_p10_ig + mpi_p10_ib)
+let mpa_t21_fwd = @mpa_t21[vds] ge 0
+let mpa_t21_id = -(mpa_t21_fwd * (@mpa_t21[id] + @mpa_t21[isub] - @mpa_t21[igcd]) - (1 - mpa_t21_fwd) * (@mpa_t21[id] + @mpa_t21[igcs]) + @mpa_t21[igidl] - @mpa_t21[ibd] - @mpa_t21[igd])
+let mpa_t21_ig = -(@mpa_t21[igs] + @mpa_t21[igd] + @mpa_t21[igcs] + @mpa_t21[igcd] + @mpa_t21[igb])
+let mpa_t21_ib = -(@mpa_t21[ibd] + @mpa_t21[ibs] - @mpa_t21[igidl] - @mpa_t21[igisl] - @mpa_t21[isub] - @mpa_t21[igb])
+let mpa_t21_is = -(mpa_t21_id + mpa_t21_ig + mpa_t21_ib)
+let mpb_t21_fwd = @mpb_t21[vds] ge 0
+let mpb_t21_id = -(mpb_t21_fwd * (@mpb_t21[id] + @mpb_t21[isub] - @mpb_t21[igcd]) - (1 - mpb_t21_fwd) * (@mpb_t21[id] + @mpb_t21[igcs]) + @mpb_t21[igidl] - @mpb_t21[ibd] - @mpb_t21[igd])
+let mpb_t21_ig = -(@mpb_t21[igs] + @mpb_t21[igd] + @mpb_t21[igcs] + @mpb_t21[igcd] + @mpb_t21[igb])
+let mpb_t21_ib = -(@mpb_t21[ibd] + @mpb_t21[ibs] - @mpb_t21[igidl] - @mpb_t21[igisl] - @mpb_t21[isub] - @mpb_t21[igb])
+let mpb_t21_is = -(mpb_t21_id + mpb_t21_ig + mpb_t21_ib)
+let mpi_t21_fwd = @mpi_t21[vds] ge 0
+let mpi_t21_id = -(mpi_t21_fwd * (@mpi_t21[id] + @mpi_t21[isub] - @mpi_t21[igcd]) - (1 - mpi_t21_fwd) * (@mpi_t21[id] + @mpi_t21[igcs]) + @mpi_t21[igidl] - @mpi_t21[ibd] - @mpi_t21[igd])
+let mpi_t21_ig = -(@mpi_t21[igs] + @mpi_t21[igd] + @mpi_t21[igcs] + @mpi_t21[igcd] + @mpi_t21[igb])
+let mpi_t21_ib = -(@mpi_t21[ibd] + @mpi_t21[ibs] - @mpi_t21[igidl] - @mpi_t21[igisl] - @mpi_t21[isub] - @mpi_t21[igb])
+let mpi_t21_is = -(mpi_t21_id + mpi_t21_ig + mpi_t21_ib)
+let mpa_o20_fwd = @mpa_o20[vds] ge 0
+let mpa_o20_id = -(mpa_o20_fwd * (@mpa_o20[id] + @mpa_o20[isub] - @mpa_o20[igcd]) - (1 - mpa_o20_fwd) * (@mpa_o20[id] + @mpa_o20[igcs]) + @mpa_o20[igidl] - @mpa_o20[ibd] - @mpa_o20[igd])
+let mpa_o20_ig = -(@mpa_o20[igs] + @mpa_o20[igd] + @mpa_o20[igcs] + @mpa_o20[igcd] + @mpa_o20[igb])
+let mpa_o20_ib = -(@mpa_o20[ibd] + @mpa_o20[ibs] - @mpa_o20[igidl] - @mpa_o20[igisl] - @mpa_o20[isub] - @mpa_o20[igb])
+let mpa_o20_is = -(mpa_o20_id + mpa_o20_ig + mpa_o20_ib)
+let mpb_o20_fwd = @mpb_o20[vds] ge 0
+let mpb_o20_id = -(mpb_o20_fwd * (@mpb_o20[id] + @mpb_o20[isub] - @mpb_o20[igcd]) - (1 - mpb_o20_fwd) * (@mpb_o20[id] + @mpb_o20[igcs]) + @mpb_o20[igidl] - @mpb_o20[ibd] - @mpb_o20[igd])
+let mpb_o20_ig = -(@mpb_o20[igs] + @mpb_o20[igd] + @mpb_o20[igcs] + @mpb_o20[igcd] + @mpb_o20[igb])
+let mpb_o20_ib = -(@mpb_o20[ibd] + @mpb_o20[ibs] - @mpb_o20[igidl] - @mpb_o20[igisl] - @mpb_o20[isub] - @mpb_o20[igb])
+let mpb_o20_is = -(mpb_o20_id + mpb_o20_ig + mpb_o20_ib)
+let mpi_o20_fwd = @mpi_o20[vds] ge 0
+let mpi_o20_id = -(mpi_o20_fwd * (@mpi_o20[id] + @mpi_o20[isub] - @mpi_o20[igcd]) - (1 - mpi_o20_fwd) * (@mpi_o20[id] + @mpi_o20[igcs]) + @mpi_o20[igidl] - @mpi_o20[ibd] - @mpi_o20[igd])
+let mpi_o20_ig = -(@mpi_o20[igs] + @mpi_o20[igd] + @mpi_o20[igcs] + @mpi_o20[igcd] + @mpi_o20[igb])
+let mpi_o20_ib = -(@mpi_o20[ibd] + @mpi_o20[ibs] - @mpi_o20[igidl] - @mpi_o20[igisl] - @mpi_o20[isub] - @mpi_o20[igb])
+let mpi_o20_is = -(mpi_o20_id + mpi_o20_ig + mpi_o20_ib)
+let mpa_c2_fwd = @mpa_c2[vds] ge 0
+let mpa_c2_id = -(mpa_c2_fwd * (@mpa_c2[id] + @mpa_c2[isub] - @mpa_c2[igcd]) - (1 - mpa_c2_fwd) * (@mpa_c2[id] + @mpa_c2[igcs]) + @mpa_c2[igidl] - @mpa_c2[ibd] - @mpa_c2[igd])
+let mpa_c2_ig = -(@mpa_c2[igs] + @mpa_c2[igd] + @mpa_c2[igcs] + @mpa_c2[igcd] + @mpa_c2[igb])
+let mpa_c2_ib = -(@mpa_c2[ibd] + @mpa_c2[ibs] - @mpa_c2[igidl] - @mpa_c2[igisl] - @mpa_c2[isub] - @mpa_c2[igb])
+let mpa_c2_is = -(mpa_c2_id + mpa_c2_ig + mpa_c2_ib)
+let mpb_c2_fwd = @mpb_c2[vds] ge 0
+let mpb_c2_id = -(mpb_c2_fwd * (@mpb_c2[id] + @mpb_c2[isub] - @mpb_c2[igcd]) - (1 - mpb_c2_fwd) * (@mpb_c2[id] + @mpb_c2[igcs]) + @mpb_c2[igidl] - @mpb_c2[ibd] - @mpb_c2[igd])
+let mpb_c2_ig = -(@mpb_c2[igs] + @mpb_c2[igd] + @mpb_c2[igcs] + @mpb_c2[igcd] + @mpb_c2[igb])
+let mpb_c2_ib = -(@mpb_c2[ibd] + @mpb_c2[ibs] - @mpb_c2[igidl] - @mpb_c2[igisl] - @mpb_c2[isub] - @mpb_c2[igb])
+let mpb_c2_is = -(mpb_c2_id + mpb_c2_ig + mpb_c2_ib)
+let mpi_c2_fwd = @mpi_c2[vds] ge 0
+let mpi_c2_id = -(mpi_c2_fwd * (@mpi_c2[id] + @mpi_c2[isub] - @mpi_c2[igcd]) - (1 - mpi_c2_fwd) * (@mpi_c2[id] + @mpi_c2[igcs]) + @mpi_c2[igidl] - @mpi_c2[ibd] - @mpi_c2[igd])
+let mpi_c2_ig = -(@mpi_c2[igs] + @mpi_c2[igd] + @mpi_c2[igcs] + @mpi_c2[igcd] + @mpi_c2[igb])
+let mpi_c2_ib = -(@mpi_c2[ibd] + @mpi_c2[ibs] - @mpi_c2[igidl] - @mpi_c2[igisl] - @mpi_c2[isub] - @mpi_c2[igb])
+let mpi_c2_is = -(mpi_c2_id + mpi_c2_ig + mpi_c2_ib)
+let mpa_t30_fwd = @mpa_t30[vds] ge 0
+let mpa_t30_id = -(mpa_t30_fwd * (@mpa_t30[id] + @mpa_t30[isub] - @mpa_t30[igcd]) - (1 - mpa_t30_fwd) * (@mpa_t30[id] + @mpa_t30[igcs]) + @mpa_t30[igidl] - @mpa_t30[ibd] - @mpa_t30[igd])
+let mpa_t30_ig = -(@mpa_t30[igs] + @mpa_t30[igd] + @mpa_t30[igcs] + @mpa_t30[igcd] + @mpa_t30[igb])
+let mpa_t30_ib = -(@mpa_t30[ibd] + @mpa_t30[ibs] - @mpa_t30[igidl] - @mpa_t30[igisl] - @mpa_t30[isub] - @mpa_t30[igb])
+let mpa_t30_is = -(mpa_t30_id + mpa_t30_ig + mpa_t30_ib)
+let mpb_t30_fwd = @mpb_t30[vds] ge 0
+let mpb_t30_id = -(mpb_t30_fwd * (@mpb_t30[id] + @mpb_t30[isub] - @mpb_t30[igcd]) - (1 - mpb_t30_fwd) * (@mpb_t30[id] + @mpb_t30[igcs]) + @mpb_t30[igidl] - @mpb_t30[ibd] - @mpb_t30[igd])
+let mpb_t30_ig = -(@mpb_t30[igs] + @mpb_t30[igd] + @mpb_t30[igcs] + @mpb_t30[igcd] + @mpb_t30[igb])
+let mpb_t30_ib = -(@mpb_t30[ibd] + @mpb_t30[ibs] - @mpb_t30[igidl] - @mpb_t30[igisl] - @mpb_t30[isub] - @mpb_t30[igb])
+let mpb_t30_is = -(mpb_t30_id + mpb_t30_ig + mpb_t30_ib)
+let mpi_t30_fwd = @mpi_t30[vds] ge 0
+let mpi_t30_id = -(mpi_t30_fwd * (@mpi_t30[id] + @mpi_t30[isub] - @mpi_t30[igcd]) - (1 - mpi_t30_fwd) * (@mpi_t30[id] + @mpi_t30[igcs]) + @mpi_t30[igidl] - @mpi_t30[ibd] - @mpi_t30[igd])
+let mpi_t30_ig = -(@mpi_t30[igs] + @mpi_t30[igd] + @mpi_t30[igcs] + @mpi_t30[igcd] + @mpi_t30[igb])
+let mpi_t30_ib = -(@mpi_t30[ibd] + @mpi_t30[ibs] - @mpi_t30[igidl] - @mpi_t30[igisl] - @mpi_t30[isub] - @mpi_t30[igb])
+let mpi_t30_is = -(mpi_t30_id + mpi_t30_ig + mpi_t30_ib)
+let mpa_p21_fwd = @mpa_p21[vds] ge 0
+let mpa_p21_id = -(mpa_p21_fwd * (@mpa_p21[id] + @mpa_p21[isub] - @mpa_p21[igcd]) - (1 - mpa_p21_fwd) * (@mpa_p21[id] + @mpa_p21[igcs]) + @mpa_p21[igidl] - @mpa_p21[ibd] - @mpa_p21[igd])
+let mpa_p21_ig = -(@mpa_p21[igs] + @mpa_p21[igd] + @mpa_p21[igcs] + @mpa_p21[igcd] + @mpa_p21[igb])
+let mpa_p21_ib = -(@mpa_p21[ibd] + @mpa_p21[ibs] - @mpa_p21[igidl] - @mpa_p21[igisl] - @mpa_p21[isub] - @mpa_p21[igb])
+let mpa_p21_is = -(mpa_p21_id + mpa_p21_ig + mpa_p21_ib)
+let mpb_p21_fwd = @mpb_p21[vds] ge 0
+let mpb_p21_id = -(mpb_p21_fwd * (@mpb_p21[id] + @mpb_p21[isub] - @mpb_p21[igcd]) - (1 - mpb_p21_fwd) * (@mpb_p21[id] + @mpb_p21[igcs]) + @mpb_p21[igidl] - @mpb_p21[ibd] - @mpb_p21[igd])
+let mpb_p21_ig = -(@mpb_p21[igs] + @mpb_p21[igd] + @mpb_p21[igcs] + @mpb_p21[igcd] + @mpb_p21[igb])
+let mpb_p21_ib = -(@mpb_p21[ibd] + @mpb_p21[ibs] - @mpb_p21[igidl] - @mpb_p21[igisl] - @mpb_p21[isub] - @mpb_p21[igb])
+let mpb_p21_is = -(mpb_p21_id + mpb_p21_ig + mpb_p21_ib)
+let mpi_p21_fwd = @mpi_p21[vds] ge 0
+let mpi_p21_id = -(mpi_p21_fwd * (@mpi_p21[id] + @mpi_p21[isub] - @mpi_p21[igcd]) - (1 - mpi_p21_fwd) * (@mpi_p21[id] + @mpi_p21[igcs]) + @mpi_p21[igidl] - @mpi_p21[ibd] - @mpi_p21[igd])
+let mpi_p21_ig = -(@mpi_p21[igs] + @mpi_p21[igd] + @mpi_p21[igcs] + @mpi_p21[igcd] + @mpi_p21[igb])
+let mpi_p21_ib = -(@mpi_p21[ibd] + @mpi_p21[ibs] - @mpi_p21[igidl] - @mpi_p21[igisl] - @mpi_p21[isub] - @mpi_p21[igb])
+let mpi_p21_is = -(mpi_p21_id + mpi_p21_ig + mpi_p21_ib)
+let mpa_t31_fwd = @mpa_t31[vds] ge 0
+let mpa_t31_id = -(mpa_t31_fwd * (@mpa_t31[id] + @mpa_t31[isub] - @mpa_t31[igcd]) - (1 - mpa_t31_fwd) * (@mpa_t31[id] + @mpa_t31[igcs]) + @mpa_t31[igidl] - @mpa_t31[ibd] - @mpa_t31[igd])
+let mpa_t31_ig = -(@mpa_t31[igs] + @mpa_t31[igd] + @mpa_t31[igcs] + @mpa_t31[igcd] + @mpa_t31[igb])
+let mpa_t31_ib = -(@mpa_t31[ibd] + @mpa_t31[ibs] - @mpa_t31[igidl] - @mpa_t31[igisl] - @mpa_t31[isub] - @mpa_t31[igb])
+let mpa_t31_is = -(mpa_t31_id + mpa_t31_ig + mpa_t31_ib)
+let mpb_t31_fwd = @mpb_t31[vds] ge 0
+let mpb_t31_id = -(mpb_t31_fwd * (@mpb_t31[id] + @mpb_t31[isub] - @mpb_t31[igcd]) - (1 - mpb_t31_fwd) * (@mpb_t31[id] + @mpb_t31[igcs]) + @mpb_t31[igidl] - @mpb_t31[ibd] - @mpb_t31[igd])
+let mpb_t31_ig = -(@mpb_t31[igs] + @mpb_t31[igd] + @mpb_t31[igcs] + @mpb_t31[igcd] + @mpb_t31[igb])
+let mpb_t31_ib = -(@mpb_t31[ibd] + @mpb_t31[ibs] - @mpb_t31[igidl] - @mpb_t31[igisl] - @mpb_t31[isub] - @mpb_t31[igb])
+let mpb_t31_is = -(mpb_t31_id + mpb_t31_ig + mpb_t31_ib)
+let mpi_t31_fwd = @mpi_t31[vds] ge 0
+let mpi_t31_id = -(mpi_t31_fwd * (@mpi_t31[id] + @mpi_t31[isub] - @mpi_t31[igcd]) - (1 - mpi_t31_fwd) * (@mpi_t31[id] + @mpi_t31[igcs]) + @mpi_t31[igidl] - @mpi_t31[ibd] - @mpi_t31[igd])
+let mpi_t31_ig = -(@mpi_t31[igs] + @mpi_t31[igd] + @mpi_t31[igcs] + @mpi_t31[igcd] + @mpi_t31[igb])
+let mpi_t31_ib = -(@mpi_t31[ibd] + @mpi_t31[ibs] - @mpi_t31[igidl] - @mpi_t31[igisl] - @mpi_t31[isub] - @mpi_t31[igb])
+let mpi_t31_is = -(mpi_t31_id + mpi_t31_ig + mpi_t31_ib)
+let mpa_p210_fwd = @mpa_p210[vds] ge 0
+let mpa_p210_id = -(mpa_p210_fwd * (@mpa_p210[id] + @mpa_p210[isub] - @mpa_p210[igcd]) - (1 - mpa_p210_fwd) * (@mpa_p210[id] + @mpa_p210[igcs]) + @mpa_p210[igidl] - @mpa_p210[ibd] - @mpa_p210[igd])
+let mpa_p210_ig = -(@mpa_p210[igs] + @mpa_p210[igd] + @mpa_p210[igcs] + @mpa_p210[igcd] + @mpa_p210[igb])
+let mpa_p210_ib = -(@mpa_p210[ibd] + @mpa_p210[ibs] - @mpa_p210[igidl] - @mpa_p210[igisl] - @mpa_p210[isub] - @mpa_p210[igb])
+let mpa_p210_is = -(mpa_p210_id + mpa_p210_ig + mpa_p210_ib)
+let mpb_p210_fwd = @mpb_p210[vds] ge 0
+let mpb_p210_id = -(mpb_p210_fwd * (@mpb_p210[id] + @mpb_p210[isub] - @mpb_p210[igcd]) - (1 - mpb_p210_fwd) * (@mpb_p210[id] + @mpb_p210[igcs]) + @mpb_p210[igidl] - @mpb_p210[ibd] - @mpb_p210[igd])
+let mpb_p210_ig = -(@mpb_p210[igs] + @mpb_p210[igd] + @mpb_p210[igcs] + @mpb_p210[igcd] + @mpb_p210[igb])
+let mpb_p210_ib = -(@mpb_p210[ibd] + @mpb_p210[ibs] - @mpb_p210[igidl] - @mpb_p210[igisl] - @mpb_p210[isub] - @mpb_p210[igb])
+let mpb_p210_is = -(mpb_p210_id + mpb_p210_ig + mpb_p210_ib)
+let mpi_p210_fwd = @mpi_p210[vds] ge 0
+let mpi_p210_id = -(mpi_p210_fwd * (@mpi_p210[id] + @mpi_p210[isub] - @mpi_p210[igcd]) - (1 - mpi_p210_fwd) * (@mpi_p210[id] + @mpi_p210[igcs]) + @mpi_p210[igidl] - @mpi_p210[ibd] - @mpi_p210[igd])
+let mpi_p210_ig = -(@mpi_p210[igs] + @mpi_p210[igd] + @mpi_p210[igcs] + @mpi_p210[igcd] + @mpi_p210[igb])
+let mpi_p210_ib = -(@mpi_p210[ibd] + @mpi_p210[ibs] - @mpi_p210[igidl] - @mpi_p210[igisl] - @mpi_p210[isub] - @mpi_p210[igb])
+let mpi_p210_is = -(mpi_p210_id + mpi_p210_ig + mpi_p210_ib)
+let mpa_t32_fwd = @mpa_t32[vds] ge 0
+let mpa_t32_id = -(mpa_t32_fwd * (@mpa_t32[id] + @mpa_t32[isub] - @mpa_t32[igcd]) - (1 - mpa_t32_fwd) * (@mpa_t32[id] + @mpa_t32[igcs]) + @mpa_t32[igidl] - @mpa_t32[ibd] - @mpa_t32[igd])
+let mpa_t32_ig = -(@mpa_t32[igs] + @mpa_t32[igd] + @mpa_t32[igcs] + @mpa_t32[igcd] + @mpa_t32[igb])
+let mpa_t32_ib = -(@mpa_t32[ibd] + @mpa_t32[ibs] - @mpa_t32[igidl] - @mpa_t32[igisl] - @mpa_t32[isub] - @mpa_t32[igb])
+let mpa_t32_is = -(mpa_t32_id + mpa_t32_ig + mpa_t32_ib)
+let mpb_t32_fwd = @mpb_t32[vds] ge 0
+let mpb_t32_id = -(mpb_t32_fwd * (@mpb_t32[id] + @mpb_t32[isub] - @mpb_t32[igcd]) - (1 - mpb_t32_fwd) * (@mpb_t32[id] + @mpb_t32[igcs]) + @mpb_t32[igidl] - @mpb_t32[ibd] - @mpb_t32[igd])
+let mpb_t32_ig = -(@mpb_t32[igs] + @mpb_t32[igd] + @mpb_t32[igcs] + @mpb_t32[igcd] + @mpb_t32[igb])
+let mpb_t32_ib = -(@mpb_t32[ibd] + @mpb_t32[ibs] - @mpb_t32[igidl] - @mpb_t32[igisl] - @mpb_t32[isub] - @mpb_t32[igb])
+let mpb_t32_is = -(mpb_t32_id + mpb_t32_ig + mpb_t32_ib)
+let mpi_t32_fwd = @mpi_t32[vds] ge 0
+let mpi_t32_id = -(mpi_t32_fwd * (@mpi_t32[id] + @mpi_t32[isub] - @mpi_t32[igcd]) - (1 - mpi_t32_fwd) * (@mpi_t32[id] + @mpi_t32[igcs]) + @mpi_t32[igidl] - @mpi_t32[ibd] - @mpi_t32[igd])
+let mpi_t32_ig = -(@mpi_t32[igs] + @mpi_t32[igd] + @mpi_t32[igcs] + @mpi_t32[igcd] + @mpi_t32[igb])
+let mpi_t32_ib = -(@mpi_t32[ibd] + @mpi_t32[ibs] - @mpi_t32[igidl] - @mpi_t32[igisl] - @mpi_t32[isub] - @mpi_t32[igb])
+let mpi_t32_is = -(mpi_t32_id + mpi_t32_ig + mpi_t32_ib)
+let mpa_o30_fwd = @mpa_o30[vds] ge 0
+let mpa_o30_id = -(mpa_o30_fwd * (@mpa_o30[id] + @mpa_o30[isub] - @mpa_o30[igcd]) - (1 - mpa_o30_fwd) * (@mpa_o30[id] + @mpa_o30[igcs]) + @mpa_o30[igidl] - @mpa_o30[ibd] - @mpa_o30[igd])
+let mpa_o30_ig = -(@mpa_o30[igs] + @mpa_o30[igd] + @mpa_o30[igcs] + @mpa_o30[igcd] + @mpa_o30[igb])
+let mpa_o30_ib = -(@mpa_o30[ibd] + @mpa_o30[ibs] - @mpa_o30[igidl] - @mpa_o30[igisl] - @mpa_o30[isub] - @mpa_o30[igb])
+let mpa_o30_is = -(mpa_o30_id + mpa_o30_ig + mpa_o30_ib)
+let mpb_o30_fwd = @mpb_o30[vds] ge 0
+let mpb_o30_id = -(mpb_o30_fwd * (@mpb_o30[id] + @mpb_o30[isub] - @mpb_o30[igcd]) - (1 - mpb_o30_fwd) * (@mpb_o30[id] + @mpb_o30[igcs]) + @mpb_o30[igidl] - @mpb_o30[ibd] - @mpb_o30[igd])
+let mpb_o30_ig = -(@mpb_o30[igs] + @mpb_o30[igd] + @mpb_o30[igcs] + @mpb_o30[igcd] + @mpb_o30[igb])
+let mpb_o30_ib = -(@mpb_o30[ibd] + @mpb_o30[ibs] - @mpb_o30[igidl] - @mpb_o30[igisl] - @mpb_o30[isub] - @mpb_o30[igb])
+let mpb_o30_is = -(mpb_o30_id + mpb_o30_ig + mpb_o30_ib)
+let mpi_o30_fwd = @mpi_o30[vds] ge 0
+let mpi_o30_id = -(mpi_o30_fwd * (@mpi_o30[id] + @mpi_o30[isub] - @mpi_o30[igcd]) - (1 - mpi_o30_fwd) * (@mpi_o30[id] + @mpi_o30[igcs]) + @mpi_o30[igidl] - @mpi_o30[ibd] - @mpi_o30[igd])
+let mpi_o30_ig = -(@mpi_o30[igs] + @mpi_o30[igd] + @mpi_o30[igcs] + @mpi_o30[igcd] + @mpi_o30[igb])
+let mpi_o30_ib = -(@mpi_o30[ibd] + @mpi_o30[ibs] - @mpi_o30[igidl] - @mpi_o30[igisl] - @mpi_o30[isub] - @mpi_o30[igb])
+let mpi_o30_is = -(mpi_o30_id + mpi_o30_ig + mpi_o30_ib)
+let mpa_o31_fwd = @mpa_o31[vds] ge 0
+let mpa_o31_id = -(mpa_o31_fwd * (@mpa_o31[id] + @mpa_o31[isub] - @mpa_o31[igcd]) - (1 - mpa_o31_fwd) * (@mpa_o31[id] + @mpa_o31[igcs]) + @mpa_o31[igidl] - @mpa_o31[ibd] - @mpa_o31[igd])
+let mpa_o31_ig = -(@mpa_o31[igs] + @mpa_o31[igd] + @mpa_o31[igcs] + @mpa_o31[igcd] + @mpa_o31[igb])
+let mpa_o31_ib = -(@mpa_o31[ibd] + @mpa_o31[ibs] - @mpa_o31[igidl] - @mpa_o31[igisl] - @mpa_o31[isub] - @mpa_o31[igb])
+let mpa_o31_is = -(mpa_o31_id + mpa_o31_ig + mpa_o31_ib)
+let mpb_o31_fwd = @mpb_o31[vds] ge 0
+let mpb_o31_id = -(mpb_o31_fwd * (@mpb_o31[id] + @mpb_o31[isub] - @mpb_o31[igcd]) - (1 - mpb_o31_fwd) * (@mpb_o31[id] + @mpb_o31[igcs]) + @mpb_o31[igidl] - @mpb_o31[ibd] - @mpb_o31[igd])
+let mpb_o31_ig = -(@mpb_o31[igs] + @mpb_o31[igd] + @mpb_o31[igcs] + @mpb_o31[igcd] + @mpb_o31[igb])
+let mpb_o31_ib = -(@mpb_o31[ibd] + @mpb_o31[ibs] - @mpb_o31[igidl] - @mpb_o31[igisl] - @mpb_o31[isub] - @mpb_o31[igb])
+let mpb_o31_is = -(mpb_o31_id + mpb_o31_ig + mpb_o31_ib)
+let mpi_o31_fwd = @mpi_o31[vds] ge 0
+let mpi_o31_id = -(mpi_o31_fwd * (@mpi_o31[id] + @mpi_o31[isub] - @mpi_o31[igcd]) - (1 - mpi_o31_fwd) * (@mpi_o31[id] + @mpi_o31[igcs]) + @mpi_o31[igidl] - @mpi_o31[ibd] - @mpi_o31[igd])
+let mpi_o31_ig = -(@mpi_o31[igs] + @mpi_o31[igd] + @mpi_o31[igcs] + @mpi_o31[igcd] + @mpi_o31[igb])
+let mpi_o31_ib = -(@mpi_o31[ibd] + @mpi_o31[ibs] - @mpi_o31[igidl] - @mpi_o31[igisl] - @mpi_o31[isub] - @mpi_o31[igb])
+let mpi_o31_is = -(mpi_o31_id + mpi_o31_ig + mpi_o31_ib)
+let mpa_c3_fwd = @mpa_c3[vds] ge 0
+let mpa_c3_id = -(mpa_c3_fwd * (@mpa_c3[id] + @mpa_c3[isub] - @mpa_c3[igcd]) - (1 - mpa_c3_fwd) * (@mpa_c3[id] + @mpa_c3[igcs]) + @mpa_c3[igidl] - @mpa_c3[ibd] - @mpa_c3[igd])
+let mpa_c3_ig = -(@mpa_c3[igs] + @mpa_c3[igd] + @mpa_c3[igcs] + @mpa_c3[igcd] + @mpa_c3[igb])
+let mpa_c3_ib = -(@mpa_c3[ibd] + @mpa_c3[ibs] - @mpa_c3[igidl] - @mpa_c3[igisl] - @mpa_c3[isub] - @mpa_c3[igb])
+let mpa_c3_is = -(mpa_c3_id + mpa_c3_ig + mpa_c3_ib)
+let mpb_c3_fwd = @mpb_c3[vds] ge 0
+let mpb_c3_id = -(mpb_c3_fwd * (@mpb_c3[id] + @mpb_c3[isub] - @mpb_c3[igcd]) - (1 - mpb_c3_fwd) * (@mpb_c3[id] + @mpb_c3[igcs]) + @mpb_c3[igidl] - @mpb_c3[ibd] - @mpb_c3[igd])
+let mpb_c3_ig = -(@mpb_c3[igs] + @mpb_c3[igd] + @mpb_c3[igcs] + @mpb_c3[igcd] + @mpb_c3[igb])
+let mpb_c3_ib = -(@mpb_c3[ibd] + @mpb_c3[ibs] - @mpb_c3[igidl] - @mpb_c3[igisl] - @mpb_c3[isub] - @mpb_c3[igb])
+let mpb_c3_is = -(mpb_c3_id + mpb_c3_ig + mpb_c3_ib)
+let mpi_c3_fwd = @mpi_c3[vds] ge 0
+let mpi_c3_id = -(mpi_c3_fwd * (@mpi_c3[id] + @mpi_c3[isub] - @mpi_c3[igcd]) - (1 - mpi_c3_fwd) * (@mpi_c3[id] + @mpi_c3[igcs]) + @mpi_c3[igidl] - @mpi_c3[ibd] - @mpi_c3[igd])
+let mpi_c3_ig = -(@mpi_c3[igs] + @mpi_c3[igd] + @mpi_c3[igcs] + @mpi_c3[igcd] + @mpi_c3[igb])
+let mpi_c3_ib = -(@mpi_c3[ibd] + @mpi_c3[ibs] - @mpi_c3[igidl] - @mpi_c3[igisl] - @mpi_c3[isub] - @mpi_c3[igb])
+let mpi_c3_is = -(mpi_c3_id + mpi_c3_ig + mpi_c3_ib)
+let mpa_s0x1_fwd = @mpa_s0x1[vds] ge 0
+let mpa_s0x1_id = -(mpa_s0x1_fwd * (@mpa_s0x1[id] + @mpa_s0x1[isub] - @mpa_s0x1[igcd]) - (1 - mpa_s0x1_fwd) * (@mpa_s0x1[id] + @mpa_s0x1[igcs]) + @mpa_s0x1[igidl] - @mpa_s0x1[ibd] - @mpa_s0x1[igd])
+let mpa_s0x1_ig = -(@mpa_s0x1[igs] + @mpa_s0x1[igd] + @mpa_s0x1[igcs] + @mpa_s0x1[igcd] + @mpa_s0x1[igb])
+let mpa_s0x1_ib = -(@mpa_s0x1[ibd] + @mpa_s0x1[ibs] - @mpa_s0x1[igidl] - @mpa_s0x1[igisl] - @mpa_s0x1[isub] - @mpa_s0x1[igb])
+let mpa_s0x1_is = -(mpa_s0x1_id + mpa_s0x1_ig + mpa_s0x1_ib)
+let mpb_s0x1_fwd = @mpb_s0x1[vds] ge 0
+let mpb_s0x1_id = -(mpb_s0x1_fwd * (@mpb_s0x1[id] + @mpb_s0x1[isub] - @mpb_s0x1[igcd]) - (1 - mpb_s0x1_fwd) * (@mpb_s0x1[id] + @mpb_s0x1[igcs]) + @mpb_s0x1[igidl] - @mpb_s0x1[ibd] - @mpb_s0x1[igd])
+let mpb_s0x1_ig = -(@mpb_s0x1[igs] + @mpb_s0x1[igd] + @mpb_s0x1[igcs] + @mpb_s0x1[igcd] + @mpb_s0x1[igb])
+let mpb_s0x1_ib = -(@mpb_s0x1[ibd] + @mpb_s0x1[ibs] - @mpb_s0x1[igidl] - @mpb_s0x1[igisl] - @mpb_s0x1[isub] - @mpb_s0x1[igb])
+let mpb_s0x1_is = -(mpb_s0x1_id + mpb_s0x1_ig + mpb_s0x1_ib)
+let mpa_s0x2_fwd = @mpa_s0x2[vds] ge 0
+let mpa_s0x2_id = -(mpa_s0x2_fwd * (@mpa_s0x2[id] + @mpa_s0x2[isub] - @mpa_s0x2[igcd]) - (1 - mpa_s0x2_fwd) * (@mpa_s0x2[id] + @mpa_s0x2[igcs]) + @mpa_s0x2[igidl] - @mpa_s0x2[ibd] - @mpa_s0x2[igd])
+let mpa_s0x2_ig = -(@mpa_s0x2[igs] + @mpa_s0x2[igd] + @mpa_s0x2[igcs] + @mpa_s0x2[igcd] + @mpa_s0x2[igb])
+let mpa_s0x2_ib = -(@mpa_s0x2[ibd] + @mpa_s0x2[ibs] - @mpa_s0x2[igidl] - @mpa_s0x2[igisl] - @mpa_s0x2[isub] - @mpa_s0x2[igb])
+let mpa_s0x2_is = -(mpa_s0x2_id + mpa_s0x2_ig + mpa_s0x2_ib)
+let mpb_s0x2_fwd = @mpb_s0x2[vds] ge 0
+let mpb_s0x2_id = -(mpb_s0x2_fwd * (@mpb_s0x2[id] + @mpb_s0x2[isub] - @mpb_s0x2[igcd]) - (1 - mpb_s0x2_fwd) * (@mpb_s0x2[id] + @mpb_s0x2[igcs]) + @mpb_s0x2[igidl] - @mpb_s0x2[ibd] - @mpb_s0x2[igd])
+let mpb_s0x2_ig = -(@mpb_s0x2[igs] + @mpb_s0x2[igd] + @mpb_s0x2[igcs] + @mpb_s0x2[igcd] + @mpb_s0x2[igb])
+let mpb_s0x2_ib = -(@mpb_s0x2[ibd] + @mpb_s0x2[ibs] - @mpb_s0x2[igidl] - @mpb_s0x2[igisl] - @mpb_s0x2[isub] - @mpb_s0x2[igb])
+let mpb_s0x2_is = -(mpb_s0x2_id + mpb_s0x2_ig + mpb_s0x2_ib)
+let mpa_s0x3_fwd = @mpa_s0x3[vds] ge 0
+let mpa_s0x3_id = -(mpa_s0x3_fwd * (@mpa_s0x3[id] + @mpa_s0x3[isub] - @mpa_s0x3[igcd]) - (1 - mpa_s0x3_fwd) * (@mpa_s0x3[id] + @mpa_s0x3[igcs]) + @mpa_s0x3[igidl] - @mpa_s0x3[ibd] - @mpa_s0x3[igd])
+let mpa_s0x3_ig = -(@mpa_s0x3[igs] + @mpa_s0x3[igd] + @mpa_s0x3[igcs] + @mpa_s0x3[igcd] + @mpa_s0x3[igb])
+let mpa_s0x3_ib = -(@mpa_s0x3[ibd] + @mpa_s0x3[ibs] - @mpa_s0x3[igidl] - @mpa_s0x3[igisl] - @mpa_s0x3[isub] - @mpa_s0x3[igb])
+let mpa_s0x3_is = -(mpa_s0x3_id + mpa_s0x3_ig + mpa_s0x3_ib)
+let mpb_s0x3_fwd = @mpb_s0x3[vds] ge 0
+let mpb_s0x3_id = -(mpb_s0x3_fwd * (@mpb_s0x3[id] + @mpb_s0x3[isub] - @mpb_s0x3[igcd]) - (1 - mpb_s0x3_fwd) * (@mpb_s0x3[id] + @mpb_s0x3[igcs]) + @mpb_s0x3[igidl] - @mpb_s0x3[ibd] - @mpb_s0x3[igd])
+let mpb_s0x3_ig = -(@mpb_s0x3[igs] + @mpb_s0x3[igd] + @mpb_s0x3[igcs] + @mpb_s0x3[igcd] + @mpb_s0x3[igb])
+let mpb_s0x3_ib = -(@mpb_s0x3[ibd] + @mpb_s0x3[ibs] - @mpb_s0x3[igidl] - @mpb_s0x3[igisl] - @mpb_s0x3[isub] - @mpb_s0x3[igb])
+let mpb_s0x3_is = -(mpb_s0x3_id + mpb_s0x3_ig + mpb_s0x3_ib)
+let mpa_s0x4_fwd = @mpa_s0x4[vds] ge 0
+let mpa_s0x4_id = -(mpa_s0x4_fwd * (@mpa_s0x4[id] + @mpa_s0x4[isub] - @mpa_s0x4[igcd]) - (1 - mpa_s0x4_fwd) * (@mpa_s0x4[id] + @mpa_s0x4[igcs]) + @mpa_s0x4[igidl] - @mpa_s0x4[ibd] - @mpa_s0x4[igd])
+let mpa_s0x4_ig = -(@mpa_s0x4[igs] + @mpa_s0x4[igd] + @mpa_s0x4[igcs] + @mpa_s0x4[igcd] + @mpa_s0x4[igb])
+let mpa_s0x4_ib = -(@mpa_s0x4[ibd] + @mpa_s0x4[ibs] - @mpa_s0x4[igidl] - @mpa_s0x4[igisl] - @mpa_s0x4[isub] - @mpa_s0x4[igb])
+let mpa_s0x4_is = -(mpa_s0x4_id + mpa_s0x4_ig + mpa_s0x4_ib)
+let mpb_s0x4_fwd = @mpb_s0x4[vds] ge 0
+let mpb_s0x4_id = -(mpb_s0x4_fwd * (@mpb_s0x4[id] + @mpb_s0x4[isub] - @mpb_s0x4[igcd]) - (1 - mpb_s0x4_fwd) * (@mpb_s0x4[id] + @mpb_s0x4[igcs]) + @mpb_s0x4[igidl] - @mpb_s0x4[ibd] - @mpb_s0x4[igd])
+let mpb_s0x4_ig = -(@mpb_s0x4[igs] + @mpb_s0x4[igd] + @mpb_s0x4[igcs] + @mpb_s0x4[igcd] + @mpb_s0x4[igb])
+let mpb_s0x4_ib = -(@mpb_s0x4[ibd] + @mpb_s0x4[ibs] - @mpb_s0x4[igidl] - @mpb_s0x4[igisl] - @mpb_s0x4[isub] - @mpb_s0x4[igb])
+let mpb_s0x4_is = -(mpb_s0x4_id + mpb_s0x4_ig + mpb_s0x4_ib)
+let mpa_s1x1_fwd = @mpa_s1x1[vds] ge 0
+let mpa_s1x1_id = -(mpa_s1x1_fwd * (@mpa_s1x1[id] + @mpa_s1x1[isub] - @mpa_s1x1[igcd]) - (1 - mpa_s1x1_fwd) * (@mpa_s1x1[id] + @mpa_s1x1[igcs]) + @mpa_s1x1[igidl] - @mpa_s1x1[ibd] - @mpa_s1x1[igd])
+let mpa_s1x1_ig = -(@mpa_s1x1[igs] + @mpa_s1x1[igd] + @mpa_s1x1[igcs] + @mpa_s1x1[igcd] + @mpa_s1x1[igb])
+let mpa_s1x1_ib = -(@mpa_s1x1[ibd] + @mpa_s1x1[ibs] - @mpa_s1x1[igidl] - @mpa_s1x1[igisl] - @mpa_s1x1[isub] - @mpa_s1x1[igb])
+let mpa_s1x1_is = -(mpa_s1x1_id + mpa_s1x1_ig + mpa_s1x1_ib)
+let mpb_s1x1_fwd = @mpb_s1x1[vds] ge 0
+let mpb_s1x1_id = -(mpb_s1x1_fwd * (@mpb_s1x1[id] + @mpb_s1x1[isub] - @mpb_s1x1[igcd]) - (1 - mpb_s1x1_fwd) * (@mpb_s1x1[id] + @mpb_s1x1[igcs]) + @mpb_s1x1[igidl] - @mpb_s1x1[ibd] - @mpb_s1x1[igd])
+let mpb_s1x1_ig = -(@mpb_s1x1[igs] + @mpb_s1x1[igd] + @mpb_s1x1[igcs] + @mpb_s1x1[igcd] + @mpb_s1x1[igb])
+let mpb_s1x1_ib = -(@mpb_s1x1[ibd] + @mpb_s1x1[ibs] - @mpb_s1x1[igidl] - @mpb_s1x1[igisl] - @mpb_s1x1[isub] - @mpb_s1x1[igb])
+let mpb_s1x1_is = -(mpb_s1x1_id + mpb_s1x1_ig + mpb_s1x1_ib)
+let mpa_s1x2_fwd = @mpa_s1x2[vds] ge 0
+let mpa_s1x2_id = -(mpa_s1x2_fwd * (@mpa_s1x2[id] + @mpa_s1x2[isub] - @mpa_s1x2[igcd]) - (1 - mpa_s1x2_fwd) * (@mpa_s1x2[id] + @mpa_s1x2[igcs]) + @mpa_s1x2[igidl] - @mpa_s1x2[ibd] - @mpa_s1x2[igd])
+let mpa_s1x2_ig = -(@mpa_s1x2[igs] + @mpa_s1x2[igd] + @mpa_s1x2[igcs] + @mpa_s1x2[igcd] + @mpa_s1x2[igb])
+let mpa_s1x2_ib = -(@mpa_s1x2[ibd] + @mpa_s1x2[ibs] - @mpa_s1x2[igidl] - @mpa_s1x2[igisl] - @mpa_s1x2[isub] - @mpa_s1x2[igb])
+let mpa_s1x2_is = -(mpa_s1x2_id + mpa_s1x2_ig + mpa_s1x2_ib)
+let mpb_s1x2_fwd = @mpb_s1x2[vds] ge 0
+let mpb_s1x2_id = -(mpb_s1x2_fwd * (@mpb_s1x2[id] + @mpb_s1x2[isub] - @mpb_s1x2[igcd]) - (1 - mpb_s1x2_fwd) * (@mpb_s1x2[id] + @mpb_s1x2[igcs]) + @mpb_s1x2[igidl] - @mpb_s1x2[ibd] - @mpb_s1x2[igd])
+let mpb_s1x2_ig = -(@mpb_s1x2[igs] + @mpb_s1x2[igd] + @mpb_s1x2[igcs] + @mpb_s1x2[igcd] + @mpb_s1x2[igb])
+let mpb_s1x2_ib = -(@mpb_s1x2[ibd] + @mpb_s1x2[ibs] - @mpb_s1x2[igidl] - @mpb_s1x2[igisl] - @mpb_s1x2[isub] - @mpb_s1x2[igb])
+let mpb_s1x2_is = -(mpb_s1x2_id + mpb_s1x2_ig + mpb_s1x2_ib)
+let mpa_s1x3_fwd = @mpa_s1x3[vds] ge 0
+let mpa_s1x3_id = -(mpa_s1x3_fwd * (@mpa_s1x3[id] + @mpa_s1x3[isub] - @mpa_s1x3[igcd]) - (1 - mpa_s1x3_fwd) * (@mpa_s1x3[id] + @mpa_s1x3[igcs]) + @mpa_s1x3[igidl] - @mpa_s1x3[ibd] - @mpa_s1x3[igd])
+let mpa_s1x3_ig = -(@mpa_s1x3[igs] + @mpa_s1x3[igd] + @mpa_s1x3[igcs] + @mpa_s1x3[igcd] + @mpa_s1x3[igb])
+let mpa_s1x3_ib = -(@mpa_s1x3[ibd] + @mpa_s1x3[ibs] - @mpa_s1x3[igidl] - @mpa_s1x3[igisl] - @mpa_s1x3[isub] - @mpa_s1x3[igb])
+let mpa_s1x3_is = -(mpa_s1x3_id + mpa_s1x3_ig + mpa_s1x3_ib)
+let mpb_s1x3_fwd = @mpb_s1x3[vds] ge 0
+let mpb_s1x3_id = -(mpb_s1x3_fwd * (@mpb_s1x3[id] + @mpb_s1x3[isub] - @mpb_s1x3[igcd]) - (1 - mpb_s1x3_fwd) * (@mpb_s1x3[id] + @mpb_s1x3[igcs]) + @mpb_s1x3[igidl] - @mpb_s1x3[ibd] - @mpb_s1x3[igd])
+let mpb_s1x3_ig = -(@mpb_s1x3[igs] + @mpb_s1x3[igd] + @mpb_s1x3[igcs] + @mpb_s1x3[igcd] + @mpb_s1x3[igb])
+let mpb_s1x3_ib = -(@mpb_s1x3[ibd] + @mpb_s1x3[ibs] - @mpb_s1x3[igidl] - @mpb_s1x3[igisl] - @mpb_s1x3[isub] - @mpb_s1x3[igb])
+let mpb_s1x3_is = -(mpb_s1x3_id + mpb_s1x3_ig + mpb_s1x3_ib)
+let mpa_s1x4_fwd = @mpa_s1x4[vds] ge 0
+let mpa_s1x4_id = -(mpa_s1x4_fwd * (@mpa_s1x4[id] + @mpa_s1x4[isub] - @mpa_s1x4[igcd]) - (1 - mpa_s1x4_fwd) * (@mpa_s1x4[id] + @mpa_s1x4[igcs]) + @mpa_s1x4[igidl] - @mpa_s1x4[ibd] - @mpa_s1x4[igd])
+let mpa_s1x4_ig = -(@mpa_s1x4[igs] + @mpa_s1x4[igd] + @mpa_s1x4[igcs] + @mpa_s1x4[igcd] + @mpa_s1x4[igb])
+let mpa_s1x4_ib = -(@mpa_s1x4[ibd] + @mpa_s1x4[ibs] - @mpa_s1x4[igidl] - @mpa_s1x4[igisl] - @mpa_s1x4[isub] - @mpa_s1x4[igb])
+let mpa_s1x4_is = -(mpa_s1x4_id + mpa_s1x4_ig + mpa_s1x4_ib)
+let mpb_s1x4_fwd = @mpb_s1x4[vds] ge 0
+let mpb_s1x4_id = -(mpb_s1x4_fwd * (@mpb_s1x4[id] + @mpb_s1x4[isub] - @mpb_s1x4[igcd]) - (1 - mpb_s1x4_fwd) * (@mpb_s1x4[id] + @mpb_s1x4[igcs]) + @mpb_s1x4[igidl] - @mpb_s1x4[ibd] - @mpb_s1x4[igd])
+let mpb_s1x4_ig = -(@mpb_s1x4[igs] + @mpb_s1x4[igd] + @mpb_s1x4[igcs] + @mpb_s1x4[igcd] + @mpb_s1x4[igb])
+let mpb_s1x4_ib = -(@mpb_s1x4[ibd] + @mpb_s1x4[ibs] - @mpb_s1x4[igidl] - @mpb_s1x4[igisl] - @mpb_s1x4[isub] - @mpb_s1x4[igb])
+let mpb_s1x4_is = -(mpb_s1x4_id + mpb_s1x4_ig + mpb_s1x4_ib)
+let mpa_s2x1_fwd = @mpa_s2x1[vds] ge 0
+let mpa_s2x1_id = -(mpa_s2x1_fwd * (@mpa_s2x1[id] + @mpa_s2x1[isub] - @mpa_s2x1[igcd]) - (1 - mpa_s2x1_fwd) * (@mpa_s2x1[id] + @mpa_s2x1[igcs]) + @mpa_s2x1[igidl] - @mpa_s2x1[ibd] - @mpa_s2x1[igd])
+let mpa_s2x1_ig = -(@mpa_s2x1[igs] + @mpa_s2x1[igd] + @mpa_s2x1[igcs] + @mpa_s2x1[igcd] + @mpa_s2x1[igb])
+let mpa_s2x1_ib = -(@mpa_s2x1[ibd] + @mpa_s2x1[ibs] - @mpa_s2x1[igidl] - @mpa_s2x1[igisl] - @mpa_s2x1[isub] - @mpa_s2x1[igb])
+let mpa_s2x1_is = -(mpa_s2x1_id + mpa_s2x1_ig + mpa_s2x1_ib)
+let mpb_s2x1_fwd = @mpb_s2x1[vds] ge 0
+let mpb_s2x1_id = -(mpb_s2x1_fwd * (@mpb_s2x1[id] + @mpb_s2x1[isub] - @mpb_s2x1[igcd]) - (1 - mpb_s2x1_fwd) * (@mpb_s2x1[id] + @mpb_s2x1[igcs]) + @mpb_s2x1[igidl] - @mpb_s2x1[ibd] - @mpb_s2x1[igd])
+let mpb_s2x1_ig = -(@mpb_s2x1[igs] + @mpb_s2x1[igd] + @mpb_s2x1[igcs] + @mpb_s2x1[igcd] + @mpb_s2x1[igb])
+let mpb_s2x1_ib = -(@mpb_s2x1[ibd] + @mpb_s2x1[ibs] - @mpb_s2x1[igidl] - @mpb_s2x1[igisl] - @mpb_s2x1[isub] - @mpb_s2x1[igb])
+let mpb_s2x1_is = -(mpb_s2x1_id + mpb_s2x1_ig + mpb_s2x1_ib)
+let mpa_s2x2_fwd = @mpa_s2x2[vds] ge 0
+let mpa_s2x2_id = -(mpa_s2x2_fwd * (@mpa_s2x2[id] + @mpa_s2x2[isub] - @mpa_s2x2[igcd]) - (1 - mpa_s2x2_fwd) * (@mpa_s2x2[id] + @mpa_s2x2[igcs]) + @mpa_s2x2[igidl] - @mpa_s2x2[ibd] - @mpa_s2x2[igd])
+let mpa_s2x2_ig = -(@mpa_s2x2[igs] + @mpa_s2x2[igd] + @mpa_s2x2[igcs] + @mpa_s2x2[igcd] + @mpa_s2x2[igb])
+let mpa_s2x2_ib = -(@mpa_s2x2[ibd] + @mpa_s2x2[ibs] - @mpa_s2x2[igidl] - @mpa_s2x2[igisl] - @mpa_s2x2[isub] - @mpa_s2x2[igb])
+let mpa_s2x2_is = -(mpa_s2x2_id + mpa_s2x2_ig + mpa_s2x2_ib)
+let mpb_s2x2_fwd = @mpb_s2x2[vds] ge 0
+let mpb_s2x2_id = -(mpb_s2x2_fwd * (@mpb_s2x2[id] + @mpb_s2x2[isub] - @mpb_s2x2[igcd]) - (1 - mpb_s2x2_fwd) * (@mpb_s2x2[id] + @mpb_s2x2[igcs]) + @mpb_s2x2[igidl] - @mpb_s2x2[ibd] - @mpb_s2x2[igd])
+let mpb_s2x2_ig = -(@mpb_s2x2[igs] + @mpb_s2x2[igd] + @mpb_s2x2[igcs] + @mpb_s2x2[igcd] + @mpb_s2x2[igb])
+let mpb_s2x2_ib = -(@mpb_s2x2[ibd] + @mpb_s2x2[ibs] - @mpb_s2x2[igidl] - @mpb_s2x2[igisl] - @mpb_s2x2[isub] - @mpb_s2x2[igb])
+let mpb_s2x2_is = -(mpb_s2x2_id + mpb_s2x2_ig + mpb_s2x2_ib)
+let mpa_s2x3_fwd = @mpa_s2x3[vds] ge 0
+let mpa_s2x3_id = -(mpa_s2x3_fwd * (@mpa_s2x3[id] + @mpa_s2x3[isub] - @mpa_s2x3[igcd]) - (1 - mpa_s2x3_fwd) * (@mpa_s2x3[id] + @mpa_s2x3[igcs]) + @mpa_s2x3[igidl] - @mpa_s2x3[ibd] - @mpa_s2x3[igd])
+let mpa_s2x3_ig = -(@mpa_s2x3[igs] + @mpa_s2x3[igd] + @mpa_s2x3[igcs] + @mpa_s2x3[igcd] + @mpa_s2x3[igb])
+let mpa_s2x3_ib = -(@mpa_s2x3[ibd] + @mpa_s2x3[ibs] - @mpa_s2x3[igidl] - @mpa_s2x3[igisl] - @mpa_s2x3[isub] - @mpa_s2x3[igb])
+let mpa_s2x3_is = -(mpa_s2x3_id + mpa_s2x3_ig + mpa_s2x3_ib)
+let mpb_s2x3_fwd = @mpb_s2x3[vds] ge 0
+let mpb_s2x3_id = -(mpb_s2x3_fwd * (@mpb_s2x3[id] + @mpb_s2x3[isub] - @mpb_s2x3[igcd]) - (1 - mpb_s2x3_fwd) * (@mpb_s2x3[id] + @mpb_s2x3[igcs]) + @mpb_s2x3[igidl] - @mpb_s2x3[ibd] - @mpb_s2x3[igd])
+let mpb_s2x3_ig = -(@mpb_s2x3[igs] + @mpb_s2x3[igd] + @mpb_s2x3[igcs] + @mpb_s2x3[igcd] + @mpb_s2x3[igb])
+let mpb_s2x3_ib = -(@mpb_s2x3[ibd] + @mpb_s2x3[ibs] - @mpb_s2x3[igidl] - @mpb_s2x3[igisl] - @mpb_s2x3[isub] - @mpb_s2x3[igb])
+let mpb_s2x3_is = -(mpb_s2x3_id + mpb_s2x3_ig + mpb_s2x3_ib)
+let mpa_s2x4_fwd = @mpa_s2x4[vds] ge 0
+let mpa_s2x4_id = -(mpa_s2x4_fwd * (@mpa_s2x4[id] + @mpa_s2x4[isub] - @mpa_s2x4[igcd]) - (1 - mpa_s2x4_fwd) * (@mpa_s2x4[id] + @mpa_s2x4[igcs]) + @mpa_s2x4[igidl] - @mpa_s2x4[ibd] - @mpa_s2x4[igd])
+let mpa_s2x4_ig = -(@mpa_s2x4[igs] + @mpa_s2x4[igd] + @mpa_s2x4[igcs] + @mpa_s2x4[igcd] + @mpa_s2x4[igb])
+let mpa_s2x4_ib = -(@mpa_s2x4[ibd] + @mpa_s2x4[ibs] - @mpa_s2x4[igidl] - @mpa_s2x4[igisl] - @mpa_s2x4[isub] - @mpa_s2x4[igb])
+let mpa_s2x4_is = -(mpa_s2x4_id + mpa_s2x4_ig + mpa_s2x4_ib)
+let mpb_s2x4_fwd = @mpb_s2x4[vds] ge 0
+let mpb_s2x4_id = -(mpb_s2x4_fwd * (@mpb_s2x4[id] + @mpb_s2x4[isub] - @mpb_s2x4[igcd]) - (1 - mpb_s2x4_fwd) * (@mpb_s2x4[id] + @mpb_s2x4[igcs]) + @mpb_s2x4[igidl] - @mpb_s2x4[ibd] - @mpb_s2x4[igd])
+let mpb_s2x4_ig = -(@mpb_s2x4[igs] + @mpb_s2x4[igd] + @mpb_s2x4[igcs] + @mpb_s2x4[igcd] + @mpb_s2x4[igb])
+let mpb_s2x4_ib = -(@mpb_s2x4[ibd] + @mpb_s2x4[ibs] - @mpb_s2x4[igidl] - @mpb_s2x4[igisl] - @mpb_s2x4[isub] - @mpb_s2x4[igb])
+let mpb_s2x4_is = -(mpb_s2x4_id + mpb_s2x4_ig + mpb_s2x4_ib)
+let leak_device = 0
+let leak_device = leak_device + mpa_p0x1_is
+let leak_device = leak_device + mpa_p0x1_ib
+let leak_device = leak_device + mpb_p0x1_is
+let leak_device = leak_device + mpb_p0x1_ib
+let leak_device = leak_device + mpa_p0x2_is
+let leak_device = leak_device + mpa_p0x2_ib
+let leak_device = leak_device + mpb_p0x2_is
+let leak_device = leak_device + mpb_p0x2_ib
+let leak_device = leak_device + mpa_p0x3_is
+let leak_device = leak_device + mpa_p0x3_ib
+let leak_device = leak_device + mpb_p0x3_is
+let leak_device = leak_device + mpb_p0x3_ib
+let leak_device = leak_device + mpa_p0x4_is
+let leak_device = leak_device + mpa_p0x4_ib
+let leak_device = leak_device + mpb_p0x4_is
+let leak_device = leak_device + mpb_p0x4_ib
+let leak_device = leak_device + mpa_p1x1_is
+let leak_device = leak_device + mpa_p1x1_ib
+let leak_device = leak_device + mpb_p1x1_is
+let leak_device = leak_device + mpb_p1x1_ib
+let leak_device = leak_device + mpa_p1x2_is
+let leak_device = leak_device + mpa_p1x2_ib
+let leak_device = leak_device + mpb_p1x2_is
+let leak_device = leak_device + mpb_p1x2_ib
+let leak_device = leak_device + mpa_p1x3_is
+let leak_device = leak_device + mpa_p1x3_ib
+let leak_device = leak_device + mpb_p1x3_is
+let leak_device = leak_device + mpb_p1x3_ib
+let leak_device = leak_device + mpa_p1x4_is
+let leak_device = leak_device + mpa_p1x4_ib
+let leak_device = leak_device + mpb_p1x4_is
+let leak_device = leak_device + mpb_p1x4_ib
+let leak_device = leak_device + mpa_p2x1_is
+let leak_device = leak_device + mpa_p2x1_ib
+let leak_device = leak_device + mpb_p2x1_is
+let leak_device = leak_device + mpb_p2x1_ib
+let leak_device = leak_device + mpa_p2x2_is
+let leak_device = leak_device + mpa_p2x2_ib
+let leak_device = leak_device + mpb_p2x2_is
+let leak_device = leak_device + mpb_p2x2_ib
+let leak_device = leak_device + mpa_p2x3_is
+let leak_device = leak_device + mpa_p2x3_ib
+let leak_device = leak_device + mpb_p2x3_is
+let leak_device = leak_device + mpb_p2x3_ib
+let leak_device = leak_device + mpa_p2x4_is
+let leak_device = leak_device + mpa_p2x4_ib
+let leak_device = leak_device + mpb_p2x4_is
+let leak_device = leak_device + mpb_p2x4_ib
+let leak_device = leak_device + mpa_g0_is
+let leak_device = leak_device + mpa_g0_ib
+let leak_device = leak_device + mpb_g0_is
+let leak_device = leak_device + mpb_g0_ib
+let leak_device = leak_device + mpi_g0_is
+let leak_device = leak_device + mpi_g0_ib
+let leak_device = leak_device + mpa_g1_is
+let leak_device = leak_device + mpa_g1_ib
+let leak_device = leak_device + mpb_g1_is
+let leak_device = leak_device + mpb_g1_ib
+let leak_device = leak_device + mpi_g1_is
+let leak_device = leak_device + mpi_g1_ib
+let leak_device = leak_device + mpa_g2_is
+let leak_device = leak_device + mpa_g2_ib
+let leak_device = leak_device + mpb_g2_is
+let leak_device = leak_device + mpb_g2_ib
+let leak_device = leak_device + mpi_g2_is
+let leak_device = leak_device + mpi_g2_ib
+let leak_device = leak_device + mpa_t10_is
+let leak_device = leak_device + mpa_t10_ib
+let leak_device = leak_device + mpb_t10_is
+let leak_device = leak_device + mpb_t10_ib
+let leak_device = leak_device + mpi_t10_is
+let leak_device = leak_device + mpi_t10_ib
+let leak_device = leak_device + mpa_c1_is
+let leak_device = leak_device + mpa_c1_ib
+let leak_device = leak_device + mpb_c1_ib
+let leak_device = leak_device + mpi_c1_is
+let leak_device = leak_device + mpi_c1_ib
+let leak_device = leak_device + mpa_t20_is
+let leak_device = leak_device + mpa_t20_ib
+let leak_device = leak_device + mpb_t20_is
+let leak_device = leak_device + mpb_t20_ib
+let leak_device = leak_device + mpi_t20_is
+let leak_device = leak_device + mpi_t20_ib
+let leak_device = leak_device + mpa_p10_is
+let leak_device = leak_device + mpa_p10_ib
+let leak_device = leak_device + mpb_p10_is
+let leak_device = leak_device + mpb_p10_ib
+let leak_device = leak_device + mpi_p10_is
+let leak_device = leak_device + mpi_p10_ib
+let leak_device = leak_device + mpa_t21_is
+let leak_device = leak_device + mpa_t21_ib
+let leak_device = leak_device + mpb_t21_is
+let leak_device = leak_device + mpb_t21_ib
+let leak_device = leak_device + mpi_t21_is
+let leak_device = leak_device + mpi_t21_ib
+let leak_device = leak_device + mpa_o20_is
+let leak_device = leak_device + mpa_o20_ib
+let leak_device = leak_device + mpb_o20_ib
+let leak_device = leak_device + mpi_o20_is
+let leak_device = leak_device + mpi_o20_ib
+let leak_device = leak_device + mpa_c2_is
+let leak_device = leak_device + mpa_c2_ib
+let leak_device = leak_device + mpb_c2_ib
+let leak_device = leak_device + mpi_c2_is
+let leak_device = leak_device + mpi_c2_ib
+let leak_device = leak_device + mpa_t30_is
+let leak_device = leak_device + mpa_t30_ib
+let leak_device = leak_device + mpb_t30_is
+let leak_device = leak_device + mpb_t30_ib
+let leak_device = leak_device + mpi_t30_is
+let leak_device = leak_device + mpi_t30_ib
+let leak_device = leak_device + mpa_p21_is
+let leak_device = leak_device + mpa_p21_ib
+let leak_device = leak_device + mpb_p21_is
+let leak_device = leak_device + mpb_p21_ib
+let leak_device = leak_device + mpi_p21_is
+let leak_device = leak_device + mpi_p21_ib
+let leak_device = leak_device + mpa_t31_is
+let leak_device = leak_device + mpa_t31_ib
+let leak_device = leak_device + mpb_t31_is
+let leak_device = leak_device + mpb_t31_ib
+let leak_device = leak_device + mpi_t31_is
+let leak_device = leak_device + mpi_t31_ib
+let leak_device = leak_device + mpa_p210_is
+let leak_device = leak_device + mpa_p210_ib
+let leak_device = leak_device + mpb_p210_is
+let leak_device = leak_device + mpb_p210_ib
+let leak_device = leak_device + mpi_p210_is
+let leak_device = leak_device + mpi_p210_ib
+let leak_device = leak_device + mpa_t32_is
+let leak_device = leak_device + mpa_t32_ib
+let leak_device = leak_device + mpb_t32_is
+let leak_device = leak_device + mpb_t32_ib
+let leak_device = leak_device + mpi_t32_is
+let leak_device = leak_device + mpi_t32_ib
+let leak_device = leak_device + mpa_o30_is
+let leak_device = leak_device + mpa_o30_ib
+let leak_device = leak_device + mpb_o30_ib
+let leak_device = leak_device + mpi_o30_is
+let leak_device = leak_device + mpi_o30_ib
+let leak_device = leak_device + mpa_o31_is
+let leak_device = leak_device + mpa_o31_ib
+let leak_device = leak_device + mpb_o31_ib
+let leak_device = leak_device + mpi_o31_is
+let leak_device = leak_device + mpi_o31_ib
+let leak_device = leak_device + mpa_c3_is
+let leak_device = leak_device + mpa_c3_ib
+let leak_device = leak_device + mpb_c3_ib
+let leak_device = leak_device + mpi_c3_is
+let leak_device = leak_device + mpi_c3_ib
+let leak_device = leak_device + mpa_s0x1_is
+let leak_device = leak_device + mpa_s0x1_ib
+let leak_device = leak_device + mpb_s0x1_is
+let leak_device = leak_device + mpb_s0x1_ib
+let leak_device = leak_device + mpa_s0x2_is
+let leak_device = leak_device + mpa_s0x2_ib
+let leak_device = leak_device + mpb_s0x2_is
+let leak_device = leak_device + mpb_s0x2_ib
+let leak_device = leak_device + mpa_s0x3_is
+let leak_device = leak_device + mpa_s0x3_ib
+let leak_device = leak_device + mpb_s0x3_is
+let leak_device = leak_device + mpb_s0x3_ib
+let leak_device = leak_device + mpa_s0x4_is
+let leak_device = leak_device + mpa_s0x4_ib
+let leak_device = leak_device + mpb_s0x4_is
+let leak_device = leak_device + mpb_s0x4_ib
+let leak_device = leak_device + mpa_s1x1_is
+let leak_device = leak_device + mpa_s1x1_ib
+let leak_device = leak_device + mpb_s1x1_is
+let leak_device = leak_device + mpb_s1x1_ib
+let leak_device = leak_device + mpa_s1x2_is
+let leak_device = leak_device + mpa_s1x2_ib
+let leak_device = leak_device + mpb_s1x2_is
+let leak_device = leak_device + mpb_s1x2_ib
+let leak_device = leak_device + mpa_s1x3_is
+let leak_device = leak_device + mpa_s1x3_ib
+let leak_device = leak_device + mpb_s1x3_is
+let leak_device = leak_device + mpb_s1x3_ib
+let leak_device = leak_device + mpa_s1x4_is
+let leak_device = leak_device + mpa_s1x4_ib
+let leak_device = leak_device + mpb_s1x4_is
+let leak_device = leak_device + mpb_s1x4_ib
+let leak_device = leak_device + mpa_s2x1_is
+let leak_device = leak_device + mpa_s2x1_ib
+let leak_device = leak_device + mpb_s2x1_is
+let leak_device = leak_device + mpb_s2x1_ib
+let leak_device = leak_device + mpa_s2x2_is
+let leak_device = leak_device + mpa_s2x2_ib
+let leak_device = leak_device + mpb_s2x2_is
+let leak_device = leak_device + mpb_s2x2_ib
+let leak_device = leak_device + mpa_s2x3_is
+let leak_device = leak_device + mpa_s2x3_ib
+let leak_device = leak_device + mpb_s2x3_is
+let leak_device = leak_device + mpb_s2x3_ib
+let leak_device = leak_device + mpa_s2x4_is
+let leak_device = leak_device + mpa_s2x4_ib
+let leak_device = leak_device + mpb_s2x4_is
+let leak_device = leak_device + mpb_s2x4_ib
+let leak_source = 0 - i(v_vdd)
+let v_p0x1 = v(p0x1)
+let v_p0x2 = v(p0x2)
+let v_p0x3 = v(p0x3)
+let v_p0 = v(p0)
+let v_p1x1 = v(p1x1)
+let v_p1x2 = v(p1x2)
+let v_p1x3 = v(p1x3)
+let v_p1 = v(p1)
+let v_p2x1 = v(p2x1)
+let v_p2x2 = v(p2x2)
+let v_p2x3 = v(p2x3)
+let v_p2 = v(p2)
+let v_g0 = v(g0)
+let v_g1 = v(g1)
+let v_g2 = v(g2)
+let v_t10 = v(t10)
+let v_c1 = v(c1)
+let v_t20 = v(t20)
+let v_p10 = v(p10)
+let v_t21 = v(t21)
+let v_o20 = v(o20)
+let v_c2 = v(c2)
+let v_t30 = v(t30)
+let v_p21 = v(p21)
+let v_t31 = v(t31)
+let v_p210 = v(p210)
+let v_t32 = v(t32)
+let v_o30 = v(o30)
+let v_o31 = v(o31)
+let v_c3 = v(c3)
+let v_s0x1 = v(s0x1)
+let v_s0x2 = v(s0x2)
+let v_s0x3 = v(s0x3)
+let v_s0 = v(s0)
+let v_s1x1 = v(s1x1)
+let v_s1x2 = v(s1x2)
+let v_s1x3 = v(s1x3)
+let v_s1 = v(s1)
+let v_s2x1 = v(s2x1)
+let v_s2x2 = v(s2x2)
+let v_s2x3 = v(s2x3)
+let v_s2 = v(s2)
+print leak_device leak_source v_p0x1 v_p0x2 v_p0x3 v_p0 v_p1x1 v_p1x2
+print v_p1x3 v_p1 v_p2x1 v_p2x2 v_p2x3 v_p2 v_g0 v_g1
+print v_g2 v_t10 v_c1 v_t20 v_p10 v_t21 v_o20 v_c2
+print v_t30 v_p21 v_t31 v_p210 v_t32 v_o30 v_o31 v_c3
+print v_s0x1 v_s0x2 v_s0x3 v_s0 v_s1x1 v_s1x2 v_s1x3 v_s1
+print v_s2x1 v_s2x2 v_s2x3 v_s2
+.endc
+.end
