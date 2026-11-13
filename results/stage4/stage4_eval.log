@@ -1,0 +1,17 @@
+level           method  simulations  mean_error_percent    ci_low   ci_high  median_error_percent  p95_error_percent  max_error_percent  r2_log10
+ gate           frozen         7200              0.5995    0.5586    0.6428                0.3206              1.901              16.16    0.9999
+ gate              old         7200               2.137     2.019     2.263                 1.524              6.101              31.45    0.9993
+ gate           oracle         7200           1.288e-08 1.108e-08 1.496e-08             2.752e-09          5.431e-08          3.171e-06         1
+ gate             null         7200               94.22     85.64     103.5                 62.16              336.7               1221       NaN
+ gate frozen minus old          NaN              -1.538    -1.651    -1.431                   NaN                NaN                NaN       NaN
+adder           frozen     5.12e+04              0.2357    0.2104    0.2629                0.1598             0.7263              2.617         1
+adder              old     5.12e+04               1.315     1.206     1.432                 1.059              3.532              10.17    0.9996
+adder           oracle     5.12e+04            0.003104  0.002803   0.00341              0.001938           0.009803            0.04195         1
+adder             null     5.12e+04               83.38      73.7     94.27                 54.73              293.2              953.9       NaN
+adder frozen minus old          NaN              -1.079    -1.188   -0.9743                   NaN                NaN                NaN       NaN
+                               gate adder
+oracle_max_below_1e-5_percent  True   NaN
+meets_99                       True  True
+improved                       True  True
+null_fails_wide                True  True
+guardrail_p95                  True   NaN

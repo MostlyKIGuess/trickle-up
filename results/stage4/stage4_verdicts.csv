@@ -1,0 +1,6 @@
+,gate,adder
+oracle_max_below_1e-5_percent,True,
+meets_99,True,True
+improved,True,True
+null_fails_wide,True,True
+guardrail_p95,True,

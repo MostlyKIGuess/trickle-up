@@ -1,0 +1,14 @@
+# The frozen method of config/stage4_eval.toml, decided by its selection_rule before any model was run
+# on the stage 4 corners. Numbers from data/arms/arm_report.csv and data/arms/noise_floor.csv.
+#
+# A2A4 3-run mean gatebias_score    0.022116 (seeds 463, 464, 465)
+# A2A4A5 3-run mean gatebias_score  0.012438 (seeds 463, 473, 483)
+# difference                        0.009678
+# 2.0 * baseline std                0.0093144 (8 seeds, std 0.0046572)
+# 0.009678 > 0.0093144, so the frozen method is A2A4A5.
+
+frozen = "A2A4A5"
+flags = ["--models", "mlp", "--transforms", "log", "--no-curve", "--seed", "463", "--separate", "--mask-off-ig", "--ensemble", "5"]
+models = "data/arms/A2A4A5_s463/models"
+trained_at_commit = "79d57612da63622ff65d3897de8640eccd327d4a"
+sha256 = { fet_nmos_off = "d7d98163781bcd3992adc7f5536c4aa3c91bb9f2e5e73aaa06a273afd6f641df", fet_nmos_on = "eed9de0c24b249f6883eeff73d6ed6aabf3759a3e789ef7c769ae8648f6c5946", fet_pmos_off = "35a109ef944ca187a7d4bc86f7b9b12ac20a05e90d8960c74a7fbc0590b27b19", fet_pmos_on = "cba47ed0c41f4d41bf3b7557c8279ab628b9cb7a066d7027d16c69f462041c80" }

@@ -1,0 +1,56 @@
+# Pre-registration of HANDOFF.md stage 4, committed before any stage 4 output exists and before any
+# A2A4A5 (A2 + A4 + ensemble) result exists. Never edit after the first result. Every run is reported.
+#
+# Values from HANDOFF.md "Pre-registration to commit before Stage 4", in TOML instead of YAML.
+
+[method]
+# The stage 3 combination, chosen on Part A validation rows only (data/arms/arm_report.csv).
+# MLP, log target, uniform and targeted training sets, 04_train.py --separate --mask-off-ig.
+candidate = "A2A4"
+candidate_models = "data/arms/A2A4_s463/models"
+# With the 5-member ensemble on top, 04_train.py --separate --mask-off-ig --ensemble 5.
+ensemble_candidate = "A2A4A5"
+ensemble_models = "data/arms/A2A4A5_s463/models"
+ensemble_size = 5
+# Frozen method: A2A4A5 if its 3-run mean gatebias_score (seeds 463, 473, 483, Part A validation,
+# 11_compare_runs.py) is below the A2A4 3-run mean by more than improvement_sigmas baseline standard
+# deviations (config/stage3_arms.toml, data/arms/noise_floor.csv), otherwise A2A4. Decided before any
+# frozen or candidate model is run on the stage 4 corners. If the A2A4A5 runs cannot all finish, A2A4.
+selection_rule = "A2A4A5 if A2A4 mean - A2A4A5 mean > 2.0 * baseline std of gatebias_score, else A2A4"
+# The models of seed 463 of the chosen label are the frozen models, as the committed models were seed 463.
+frozen_seed = 463
+# sha256 of the A2A4 seed 463 models at commit 79d5761, before this file was committed.
+candidate_sha256 = { fet_nmos_off = "abc19ee5f5c893e4bfa533379913acd7afc968c19eca70ceebb534be092378d4", fet_nmos_on = "5251fddd181ce7409483b8a75b8cc550901ef6540a67bc8dd566897eb4f5bf43", fet_pmos_off = "ef2a7302d0ae549c53c25c2d51d6a3e0ddcbed3d529963e251f9fd25c2d08d2c", fet_pmos_on = "2021913b05b5d657828a5fd1ba07366d42e38c533ab937a23136acad83da04c6" }
+# The old method for the paired difference: the committed models of 1437b67.
+old_models = "1437b67:models"
+
+[eval]
+corners = 400
+# 05_corners.py CORNER_STREAM, changed in the separate stage 4 checkout only. 4 is Part B.
+corner_stream = 5
+gate_simulations = 7200
+adder_simulations = 51200
+bootstrap = 10000
+# Resample corners, not rows. Fixed seed for the bootstrap draws.
+bootstrap_seed = 463
+confidence = 0.95
+
+[pass]
+meets_99 = "gate and adder fresh-corner mean error, 95 % CI upper bound below 1.0 %"
+improved = "paired new minus old mean error, 95 % CI upper bound below 0, for gates and for adder"
+guardrail = "gate p95 error not above the old model's point value on the same corners"
+
+[controls]
+oracle = "max error below 1e-5 % on the stage 4 corners, otherwise the run is void"
+# Checked in stage 0: 07 and 09 with the 1437b67 models reproduce results/gate_results_ml*.csv and
+# results/cla_results_ml.csv byte for byte on the regenerated Part B data.
+identity = "committed models reproduce the committed Part B tables, otherwise the run is void"
+null = "predicting the training median must fail by a wide margin"
+
+[implies]
+pass = "report the fresh-corner mean as the headline"
+fail = "report the fresh-corner mean anyway, and do not tune on these corners"
+
+[also_report]
+gate_r2 = "R2 at gate level on log10 leakage"
+transistor_r2 = "transistor R2 on the currents the composition uses, scale stated (r2_asinh is on asinh(I / I0))"
