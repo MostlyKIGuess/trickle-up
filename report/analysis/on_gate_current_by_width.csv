@@ -1,0 +1,5 @@
+case,width_in_lmin,rows,median_abs_error_percent,median_bias_percent
+nmos_on,1,2600,1.1872,1.15917
+nmos_on,2,1600,0.188808,0.0248192
+pmos_on,2,2600,0.120452,0.027662
+pmos_on,4,1600,0.0954233,-0.0328889

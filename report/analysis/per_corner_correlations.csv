@@ -1,0 +1,14 @@
+level,variable,spearman_corner_median_abs_error
+adder against gates,median_bias_percent,0.8322
+gates,rms_all,0.2272
+gates,rms_vdd_temp,0.2872
+gates,vdd,0.09771
+gates,temp,0.2208
+gates,nmos_vth0,0.002222
+gates,pmos_vth0,0.09875
+adder,rms_all,0.1379
+adder,rms_vdd_temp,0.3234
+adder,vdd,0.1338
+adder,temp,0.2534
+adder,nmos_vth0,0.0175
+adder,pmos_vth0,0.02125

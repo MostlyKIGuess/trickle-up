@@ -1,0 +1,214 @@
+state  rows  fraction_below_1mV     median_V    p90_V
+   on  8400            0.904762 8.417414e-07 0.000012
+  off  8400            0.190476 9.231318e-01 1.055905
+    case      set  rows  exactly_zero  below_floor_1e-30  smallest_nonzero_A     median_A
+nmos_off  uniform 10000             0                  0        1.175876e-26 2.298599e-21
+nmos_off targeted  5000           544               1069        2.645559e-78 8.961612e-23
+pmos_off  uniform 10000             0                  0        7.073824e-26 2.566659e-21
+pmos_off targeted  5000           744               1053        7.748398e-42 1.103103e-22
+   case  width_in_lmin  rows  median_abs_error_percent  median_bias_percent
+nmos_on              1  2600                  2.670390             2.349649
+nmos_on              2  1600                  1.016342             0.025438
+pmos_on              2  2600                  1.081977             0.409298
+pmos_on              4  1600                  0.880335            -0.019814
+      models     case  vds_below_1mV  rows terminal  median_rel_error  p95_rel_error  median_abs_spice_A
+      chosen nmos_off          False  3400       id      1.005921e-01   3.471633e-01        5.558762e-13
+      chosen nmos_off          False  3400       ig      4.141271e+01   2.436728e+07        1.641843e-29
+      chosen nmos_off          False  3400       is      9.770011e-02   3.276733e-01        5.245350e-13
+      chosen nmos_off          False  3400       ib      1.946045e-01   1.120853e+00        7.134640e-17
+      chosen nmos_off           True   800       id      1.551289e+00   2.417452e+00        7.868688e-19
+      chosen nmos_off           True   800       ig      2.487671e+00   1.157792e+02        0.000000e+00
+      chosen nmos_off           True   800       is      1.706356e+00   2.769727e+00        7.541866e-19
+      chosen nmos_off           True   800       ib      2.951634e-01   1.870996e+00        1.058921e-21
+      chosen  nmos_on          False   400       id      1.889970e-02   8.286473e-02        8.298860e-13
+      chosen  nmos_on          False   400       ig      6.566083e-03   2.315685e-02        1.643987e-16
+      chosen  nmos_on          False   400       is      1.930444e-02   9.323149e-02        8.284453e-13
+      chosen  nmos_on          False   400       ib      5.241441e-03   1.813012e-02        3.968433e-16
+      chosen  nmos_on           True  3800       id      3.192085e+00   8.179164e+02        5.613352e-12
+      chosen  nmos_on           True  3800       ig      2.011609e-02   9.591347e-02        2.098606e-11
+      chosen  nmos_on           True  3800       is      1.104800e+00   2.010272e+00        3.958557e-11
+      chosen  nmos_on           True  3800       ib      2.904377e-02   1.970861e-01        6.822692e-15
+      chosen pmos_off          False  3400       id      7.364150e-02   2.765399e-01        9.535447e-13
+      chosen pmos_off          False  3400       ig      3.613603e+01   2.994773e+07        8.127048e-29
+      chosen pmos_off          False  3400       is      7.383734e-02   2.647162e-01        8.925688e-13
+      chosen pmos_off          False  3400       ib      1.575201e-01   7.489041e-01        1.241119e-16
+      chosen pmos_off           True   800       id      1.801555e+00   2.295247e+00        7.008209e-19
+      chosen pmos_off           True   800       ig      3.031049e+00   3.895017e+02        0.000000e+00
+      chosen pmos_off           True   800       is      1.921173e+00   3.065389e+00        6.982734e-19
+      chosen pmos_off           True   800       ib      2.275120e-01   1.533785e+00        2.223250e-21
+      chosen  pmos_on          False   400       id      1.313104e-02   4.923417e-02        1.007262e-12
+      chosen  pmos_on          False   400       ig      5.305844e-03   1.653308e-02        2.968947e-16
+      chosen  pmos_on          False   400       is      1.357198e-02   6.059246e-02        1.007182e-12
+      chosen  pmos_on          False   400       ib      5.439510e-03   1.759764e-02        5.995056e-16
+      chosen  pmos_on           True  3800       id      6.797177e+00   2.728683e+03        3.323403e-12
+      chosen  pmos_on           True  3800       ig      1.068569e-02   4.444463e-02        3.377325e-11
+      chosen  pmos_on           True  3800       is      8.670436e-01   1.800694e+00        4.797752e-11
+      chosen  pmos_on           True  3800       ib      1.522760e-02   8.441726e-02        4.519166e-14
+uniform only nmos_off          False  3400       id      4.754785e-02   1.570895e-01        5.558762e-13
+uniform only nmos_off          False  3400       ig      3.545311e+05   5.664103e+07        1.641843e-29
+uniform only nmos_off          False  3400       is      4.318539e-02   1.607219e-01        5.245350e-13
+uniform only nmos_off          False  3400       ib      8.062182e-02   5.371586e-01        7.134640e-17
+uniform only nmos_off           True   800       id      3.680388e+02   3.680000e+03        7.868688e-19
+uniform only nmos_off           True   800       ig      4.755489e+05   6.267612e+06        0.000000e+00
+uniform only nmos_off           True   800       is      2.264032e+02   9.277800e+03        7.541866e-19
+uniform only nmos_off           True   800       ib      2.562208e+04   5.239112e+05        1.058921e-21
+uniform only  nmos_on          False   400       id      1.400710e-02   7.689500e-02        8.298860e-13
+uniform only  nmos_on          False   400       ig      6.176048e-03   1.925516e-02        1.643987e-16
+uniform only  nmos_on          False   400       is      1.886782e-02   1.264504e-01        8.284453e-13
+uniform only  nmos_on          False   400       ib      5.961077e-03   2.531382e-02        3.968433e-16
+uniform only  nmos_on           True  3800       id      3.060840e+01   3.828728e+03        5.613352e-12
+uniform only  nmos_on           True  3800       ig      4.170691e-01   7.531132e-01        2.098606e-11
+uniform only  nmos_on           True  3800       is      3.752785e+00   2.550397e+01        3.958557e-11
+uniform only  nmos_on           True  3800       ib      1.151951e+00   9.560811e+01        6.822692e-15
+uniform only pmos_off          False  3400       id      3.158524e-02   9.183889e-02        9.535447e-13
+uniform only pmos_off          False  3400       ig      6.418841e+05   7.545343e+07        8.127048e-29
+uniform only pmos_off          False  3400       is      3.111208e-02   1.052624e-01        8.925688e-13
+uniform only pmos_off          False  3400       ib      7.274642e-02   4.885082e-01        1.241119e-16
+uniform only pmos_off           True   800       id      3.683344e+02   3.690526e+03        7.008209e-19
+uniform only pmos_off           True   800       ig      2.056081e+07   8.722087e+08        0.000000e+00
+uniform only pmos_off           True   800       is      1.957428e+02   4.897779e+03        6.982734e-19
+uniform only pmos_off           True   800       ib      7.718815e+04   6.778096e+06        2.223250e-21
+uniform only  pmos_on          False   400       id      8.147670e-03   3.033368e-02        1.007262e-12
+uniform only  pmos_on          False   400       ig      4.584341e-03   1.619627e-02        2.968947e-16
+uniform only  pmos_on          False   400       is      8.259621e-03   4.572126e-02        1.007182e-12
+uniform only  pmos_on          False   400       ib      4.665089e-03   1.521719e-02        5.995056e-16
+uniform only  pmos_on           True  3800       id      3.755402e+01   7.203339e+03        3.323403e-12
+uniform only  pmos_on           True  3800       ig      1.269502e+00   3.323055e+00        3.377325e-11
+uniform only  pmos_on           True  3800       is      1.606735e+00   5.649610e+00        4.797752e-11
+uniform only  pmos_on           True  3800       ib      4.182399e-01   1.429190e+01        4.519166e-14
+ gate inputs  all models  nmos_on only  nmos_off only  pmos_on only  pmos_off only  on_gate_current_share_percent
+ and2     00    1.429910  4.690770e-01   6.050521e-03  6.241662e-01   1.321912e-01                      97.707865
+ and2     01    1.499205  6.805394e-01   7.558753e-02  4.264436e-01   1.882105e-01                      95.169109
+ and2     10    1.059642  6.808860e-01   1.067824e-01  2.022864e-01   8.737925e-02                      95.941497
+ and2     11    1.023642  5.818936e-01   5.231988e-02  1.761399e-01   1.344081e-01                      96.872349
+  inv      0    1.348414  7.479861e-09   2.986981e-01  9.534225e-01   7.479861e-09                      97.040320
+  inv      1    2.923011  2.067617e+00   7.643886e-12  7.643886e-12   5.532182e-01                      91.410377
+nand2     00    1.279431  9.878065e-09   1.051110e-02  1.251269e+00   9.878065e-09                      99.878525
+nand2     01    1.330514  9.676041e-06   1.453547e-01  9.560695e-01   1.082780e-07                      97.248471
+nand2     10    1.011277  5.599216e-01   1.270878e-01  3.064533e-01   2.738633e-08                      97.992466
+nand2     11    1.444929  1.019707e+00   7.471801e-12  7.471801e-12   2.061711e-01                      96.789973
+ nor2     00    1.124617  8.457501e-09   1.346597e-01  9.052017e-01   8.457501e-09                      98.687978
+ nor2     01    1.347770  3.709357e-01   7.744200e-09  6.029820e-01   2.003733e-01                      95.720393
+ nor2     10    2.521991  2.203696e+00   7.660539e-12  2.889394e-05   2.340629e-01                      94.422888
+ nor2     11    2.863805  3.006337e+00   1.556533e-11  1.556533e-11   1.395112e-02                      99.813881
+  or2     00    1.005272  2.515976e-01   1.140908e-01  5.975628e-01   6.441351e-02                      97.485773
+  or2     01    1.139202  2.453003e-01   6.365891e-02  5.737481e-01   1.448961e-01                      95.928177
+  or2     10    1.236176  5.558525e-01   1.546368e-01  5.129513e-01   7.346277e-02                      95.831188
+  or2     11    1.357013  9.852527e-01   1.131722e-01  3.663558e-01   7.470958e-03                      98.392896
+  all    all    1.387904  4.283096e-01   1.788455e-02  3.198563e-01   2.712960e-02                      97.490099
+  temp_low  temp_high  simulations  median_share_percent  min_share_percent min_gate min_inputs  min_corner   min_temp
+-39.889927  -6.927312          594             99.851389          87.260006      inv          1         196 -31.415635
+ -6.927312  26.035303          828             99.288224          77.077360      inv          1          55  18.971346
+ 26.035303  58.997918          702             97.371343          49.263572      inv          1         107  41.398701
+ 58.997918  91.960533          666             93.439157          13.023203      inv          1          46  89.226111
+ 91.960533 124.923148          810             82.899046          12.726224     nor2         10          70 121.649831
+largest difference from results/gate_results_ml.csv: 4.78e-06 points
+level        variable  spearman_abs_error  spearman_signed_error
+gates            temp            0.010102              -0.133502
+gates             vdd            0.010963               0.019617
+gates nmos_vth0_ratio           -0.067886              -0.064996
+gates pmos_vth0_ratio            0.027893               0.163015
+adder            temp           -0.025797              -0.194047
+adder             vdd            0.021226              -0.019041
+adder nmos_vth0_ratio           -0.055573              -0.117671
+adder pmos_vth0_ratio            0.019153               0.229433
+level        variable    bin_low   bin_high  simulations  median_abs_error_percent  p95_abs_error_percent  median_bias_percent  median_leak_spice_A
+gates            temp -39.889927  -6.927312          594                  1.596637               9.183147             0.876529         8.475547e-11
+gates            temp  -6.927312  26.035303          828                  1.261855               4.969587             0.702368         7.228999e-11
+gates            temp  26.035303  58.997918          702                  1.169986               5.414207             0.730849         7.914072e-11
+gates            temp  58.997918  91.960533          666                  1.160169               5.554117             0.328948         6.570799e-11
+gates            temp  91.960533 124.923148          810                  1.699027               7.030375            -0.028293         7.924133e-11
+gates             vdd   0.900773   0.940601          828                  1.550680               8.098730             0.762988         4.837068e-11
+gates             vdd   0.940601   0.980428          846                  1.123281               6.072993             0.340183         6.561992e-11
+gates             vdd   0.980428   1.020256          576                  1.013751               5.598278             0.212222         8.055868e-11
+gates             vdd   1.020256   1.060083          756                  1.465584               6.309491             0.497704         1.110140e-10
+gates             vdd   1.060083   1.099910          594                  1.690913               6.519655             1.052102         9.687682e-11
+gates nmos_vth0_ratio   0.900589   0.940245          738                  1.544230               6.999069             0.686133         8.831886e-11
+gates nmos_vth0_ratio   0.940245   0.979901          666                  1.465065               7.264002             0.901984         8.322025e-11
+gates nmos_vth0_ratio   0.979901   1.019557          702                  1.269764               5.171952             0.277951         7.526657e-11
+gates nmos_vth0_ratio   1.019557   1.059213          666                  1.332928               6.256837             0.244902         7.970861e-11
+gates nmos_vth0_ratio   1.059213   1.098869          828                  1.282739               5.414740             0.574127         6.098183e-11
+gates pmos_vth0_ratio   0.901693   0.941299          666                  1.538651               7.131372            -0.083202         1.015432e-10
+gates pmos_vth0_ratio   0.941299   0.980904          756                  1.404912               5.875000             0.489183         7.252437e-11
+gates pmos_vth0_ratio   0.980904   1.020510          774                  1.191416               6.815595             0.552058         7.562462e-11
+gates pmos_vth0_ratio   1.020510   1.060115          720                  1.264904               6.898213             0.540877         7.162611e-11
+gates pmos_vth0_ratio   1.060115   1.099720          684                  1.525723               6.512813             1.027796         6.234690e-11
+adder            temp -39.889927  -6.927312         4224                  1.263373               5.116263             0.486486         5.209645e-09
+adder            temp  -6.927312  26.035303         5888                  1.019038               3.602138             0.581123         4.025442e-09
+adder            temp  26.035303  58.997918         4992                  0.794906               4.395596             0.423566         4.654605e-09
+adder            temp  58.997918  91.960533         4736                  0.628110               3.290301             0.131222         3.355381e-09
+adder            temp  91.960533 124.923148         5760                  1.275682               3.612710            -0.388594         4.214956e-09
+adder             vdd   0.900773   0.940601         5888                  1.058877               4.957076             0.497965         3.063309e-09
+adder             vdd   0.940601   0.980428         6016                  0.855002               3.321840             0.148184         3.590762e-09
+adder             vdd   0.980428   1.020256         4096                  0.687656               3.239392             0.050023         4.883899e-09
+adder             vdd   1.020256   1.060083         5376                  0.887950               3.379931             0.048692         6.753996e-09
+adder             vdd   1.060083   1.099910         4224                  1.531239               4.635263             0.813319         6.196285e-09
+adder nmos_vth0_ratio   0.900589   0.940245         5248                  1.044328               4.773006             0.355139         5.135838e-09
+adder nmos_vth0_ratio   0.940245   0.979901         4736                  1.107747               4.998431             0.855519         4.949283e-09
+adder nmos_vth0_ratio   0.979901   1.019557         4992                  0.736339               3.907088             0.029661         4.563127e-09
+adder nmos_vth0_ratio   1.019557   1.059213         4736                  0.919770               3.564972            -0.147988         4.322201e-09
+adder nmos_vth0_ratio   1.059213   1.098869         5888                  0.895409               3.204036             0.137107         2.927909e-09
+adder pmos_vth0_ratio   0.901693   0.941299         4736                  1.178077               5.042747            -0.395927         5.928533e-09
+adder pmos_vth0_ratio   0.941299   0.980904         5376                  0.949515               2.753101             0.160474         3.885492e-09
+adder pmos_vth0_ratio   0.980904   1.020510         5504                  0.889355               3.574909             0.407446         3.798495e-09
+adder pmos_vth0_ratio   1.020510   1.060115         5120                  0.941580               3.728917             0.318296         4.430932e-09
+adder pmos_vth0_ratio   1.060115   1.099720         4864                  0.887685               4.435474             0.717353         3.386233e-09
+gates
+                         all   worst 36
+temp               41.807555  56.345982
+vdd                 0.988269   0.938942
+nmos_vth0_ratio     0.996218   1.011915
+pmos_vth0_ratio     1.000509   1.008195
+abs_error_percent   1.387904  12.164876
+gate   inputs
+inv    1         11
+nor2   11        11
+       10         7
+and2   11         1
+nand2  00         1
+       01         1
+adder
+                         all  worst 256
+temp               41.807555  89.226111
+vdd                 0.988269   1.036012
+nmos_vth0_ratio     0.996218   0.947427
+pmos_vth0_ratio     1.000509   0.922938
+abs_error_percent   0.954733   6.461954
+corner
+178    124
+112     76
+46      56
+              level            variable  spearman_corner_median_abs_error
+adder against gates median_bias_percent                          0.894711
+              gates             rms_all                          0.297616
+              gates        rms_vdd_temp                          0.357472
+              gates                 vdd                          0.223668
+              gates                temp                          0.213473
+              gates           nmos_vth0                          0.009969
+              gates           pmos_vth0                          0.180515
+              adder             rms_all                          0.254886
+              adder        rms_vdd_temp                          0.333329
+              adder                 vdd                          0.251439
+              adder                temp                          0.192543
+              adder           nmos_vth0                         -0.013853
+              adder           pmos_vth0                          0.106128
+ corner    vdd   temp  nmos_vth0  nmos_toxe  nmos_ndep  nmos_u0  nmos_xj  pmos_vth0  pmos_toxe  pmos_ndep  pmos_u0  pmos_xj  rms_all  rms_vdd_temp  gates_median_abs_error_percent  gates_median_bias_percent  adder_median_abs_error_percent  adder_median_bias_percent
+    178  0.360  0.676     -0.526      0.902     -0.842    0.414   -0.434     -0.981      0.683      0.117    0.264   -0.639    0.624         0.541                           4.993                     -4.993                           6.649                     -6.649
+    112  0.822 -0.999     -0.967     -0.479      0.983    0.437    0.459      0.740      0.685      0.887   -0.683    0.232    0.738         0.915                           3.888                     -3.888                           6.031                     -6.031
+     46 -0.928  0.566      0.119      0.831     -0.769    0.043    0.619     -0.771     -0.057      0.168    0.112    0.576    0.565         0.769                           2.903                      2.903                           5.767                      5.767
+       adder_median_abs_error_percent  gates_median_abs_error_percent
+count                      200.000000                      200.000000
+mean                         1.331186                        1.755357
+std                          1.243255                        1.231072
+min                          0.016607                        0.249493
+25%                          0.406070                        0.853895
+50%                          0.901341                        1.332258
+75%                          1.861571                        2.330858
+max                          6.649239                        7.369238
+variable     case terminal   value_first    value_last  current_first_A  current_last_A   decades
+    temp nmos_off       id -4.000000e+01  1.250000e+02     1.114702e-13    4.668100e-11  2.621981
+    temp pmos_off       id -4.000000e+01  1.250000e+02     1.069410e-13    4.203540e-11  2.594471
+    vth0 nmos_off       id  6.197220e-01  7.574380e-01     1.362289e-11    2.986513e-13 -1.659105
+    vth0 pmos_off       id -5.737050e-01 -7.011950e-01     1.371110e-11    3.937730e-13 -1.541826
+    toxe  nmos_on       ig  1.260000e-09  1.540000e-09     6.786719e-10    2.295527e-11 -1.470777
+    toxe  pmos_on       ig  1.260000e-09  1.540000e-09     3.791090e-10    1.177480e-11 -1.507811

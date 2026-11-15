@@ -1,0 +1,7 @@
+variable,case,terminal,value_first,value_last,current_first_A,current_last_A,decades
+temp,nmos_off,id,-40,125,1.1147e-13,4.6681e-11,2.62198
+temp,pmos_off,id,-40,125,1.06941e-13,4.20354e-11,2.59447
+vth0,nmos_off,id,0.619722,0.757438,1.36229e-11,2.98651e-13,-1.6591
+vth0,pmos_off,id,-0.573705,-0.701195,1.37111e-11,3.93773e-13,-1.54183
+toxe,nmos_on,ig,1.26e-09,1.54e-09,6.78672e-10,2.29553e-11,-1.47078
+toxe,pmos_on,ig,1.26e-09,1.54e-09,3.79109e-10,1.17748e-11,-1.50781

@@ -1,0 +1,65 @@
+models,case,vds_below_1mV,rows,terminal,median_rel_error,p95_rel_error,median_abs_spice_A
+chosen,nmos_off,False,3400,id,0.0680759,0.156432,5.55876e-13
+chosen,nmos_off,False,3400,ig,85150.7,3.53212e+07,1.64184e-29
+chosen,nmos_off,False,3400,is,0.0683224,0.148684,5.24535e-13
+chosen,nmos_off,False,3400,ib,0.0635916,0.308154,7.13464e-17
+chosen,nmos_off,True,800,id,1.82961,2.08585,7.86869e-19
+chosen,nmos_off,True,800,ig,41337.9,398798,0
+chosen,nmos_off,True,800,is,1.86828,2.6103,7.54187e-19
+chosen,nmos_off,True,800,ib,0.136442,0.993351,1.05892e-21
+chosen,nmos_on,False,400,id,0.0151671,0.0702247,8.29886e-13
+chosen,nmos_on,False,400,ig,0.00206207,0.00640183,1.64399e-16
+chosen,nmos_on,False,400,is,0.0143394,0.0756368,8.28445e-13
+chosen,nmos_on,False,400,ib,0.00139432,0.00501627,3.96843e-16
+chosen,nmos_on,True,3800,id,3.15929,698.14,5.61335e-12
+chosen,nmos_on,True,3800,ig,0.00852379,0.0243161,2.09861e-11
+chosen,nmos_on,True,3800,is,0.751498,1.93827,3.95856e-11
+chosen,nmos_on,True,3800,ib,0.0156654,0.0701436,6.82269e-15
+chosen,pmos_off,False,3400,id,0.0197808,0.076493,9.53545e-13
+chosen,pmos_off,False,3400,ig,102245,5.25261e+07,8.12705e-29
+chosen,pmos_off,False,3400,is,0.0192361,0.0836583,8.92569e-13
+chosen,pmos_off,False,3400,ib,0.0559458,0.354151,1.24112e-16
+chosen,pmos_off,True,800,id,1.89546,2.0887,7.00821e-19
+chosen,pmos_off,True,800,ig,345004,1.2312e+07,0
+chosen,pmos_off,True,800,is,1.99085,3.50639,6.98273e-19
+chosen,pmos_off,True,800,ib,0.141184,1.48193,2.22325e-21
+chosen,pmos_on,False,400,id,0.00887237,0.0275134,1.00726e-12
+chosen,pmos_on,False,400,ig,0.00155769,0.0049695,2.96895e-16
+chosen,pmos_on,False,400,is,0.00836398,0.0363061,1.00718e-12
+chosen,pmos_on,False,400,ib,0.00102944,0.00348234,5.99506e-16
+chosen,pmos_on,True,3800,id,7.07555,2667.64,3.3234e-12
+chosen,pmos_on,True,3800,ig,0.00104434,0.00541109,3.37733e-11
+chosen,pmos_on,True,3800,is,0.906346,1.80977,4.79775e-11
+chosen,pmos_on,True,3800,ib,0.00197839,0.0147056,4.51917e-14
+uniform only,nmos_off,False,3400,id,0.0466952,0.154174,5.55876e-13
+uniform only,nmos_off,False,3400,ig,346857,5.58898e+07,1.64184e-29
+uniform only,nmos_off,False,3400,is,0.0436434,0.160423,5.24535e-13
+uniform only,nmos_off,False,3400,ib,0.0787019,0.537128,7.13464e-17
+uniform only,nmos_off,True,800,id,448.193,4375.41,7.86869e-19
+uniform only,nmos_off,True,800,ig,450511,5.72824e+06,0
+uniform only,nmos_off,True,800,is,266.564,10835.9,7.54187e-19
+uniform only,nmos_off,True,800,ib,23545.6,438146,1.05892e-21
+uniform only,nmos_on,False,400,id,0.0131638,0.0750563,8.29886e-13
+uniform only,nmos_on,False,400,ig,0.00594853,0.0181678,1.64399e-16
+uniform only,nmos_on,False,400,is,0.0181651,0.123694,8.28445e-13
+uniform only,nmos_on,False,400,ib,0.00616217,0.0255007,3.96843e-16
+uniform only,nmos_on,True,3800,id,29.6879,3630.71,5.61335e-12
+uniform only,nmos_on,True,3800,ig,0.40968,0.751373,2.09861e-11
+uniform only,nmos_on,True,3800,is,3.67132,23.1144,3.95856e-11
+uniform only,nmos_on,True,3800,ib,1.15503,92.6575,6.82269e-15
+uniform only,pmos_off,False,3400,id,0.0314346,0.0885127,9.53545e-13
+uniform only,pmos_off,False,3400,ig,640531,7.56931e+07,8.12705e-29
+uniform only,pmos_off,False,3400,is,0.0306518,0.105816,8.92569e-13
+uniform only,pmos_off,False,3400,ib,0.0693376,0.459948,1.24112e-16
+uniform only,pmos_off,True,800,id,347.172,3549.5,7.00821e-19
+uniform only,pmos_off,True,800,ig,1.80863e+07,8.07379e+08,0
+uniform only,pmos_off,True,800,is,216.077,4571.57,6.98273e-19
+uniform only,pmos_off,True,800,ib,70747.3,6.21204e+06,2.22325e-21
+uniform only,pmos_on,False,400,id,0.00839587,0.0307461,1.00726e-12
+uniform only,pmos_on,False,400,ig,0.00501928,0.0155163,2.96895e-16
+uniform only,pmos_on,False,400,is,0.00817052,0.0487895,1.00718e-12
+uniform only,pmos_on,False,400,ib,0.00472661,0.0151092,5.99506e-16
+uniform only,pmos_on,True,3800,id,37.883,7402.06,3.3234e-12
+uniform only,pmos_on,True,3800,ig,1.16014,3.03029,3.37733e-11
+uniform only,pmos_on,True,3800,is,1.64778,5.80642,4.79775e-11
+uniform only,pmos_on,True,3800,ib,0.409506,15.5077,4.51917e-14

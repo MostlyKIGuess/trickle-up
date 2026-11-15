@@ -1,0 +1,126 @@
+% Per-transistor model variants: baseline, + gate/body MLP and masked loss, + 5-seed ensemble (frozen).
+% Components and sizes from scripts/fet_model.py and the bundles in data/arms/A2A4A5_s463/models.
+% Build: pdflatex model_variants.tex && pdfcrop --margins 4 model_variants.pdf model_variants.pdf
+\documentclass{article}
+\usepackage[paperwidth=40cm,paperheight=20cm,margin=1cm]{geometry}
+\usepackage[scaled=0.92]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[eulergreek]{sansmath}
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc,arrows.meta,fit,backgrounds}
+\pagestyle{empty}
+
+\definecolor{linL}{HTML}{E6F0F8}\definecolor{linD}{HTML}{8EAFCB}
+\definecolor{mlpL}{HTML}{E3F1DC}\definecolor{mlpD}{HTML}{98C285}
+\definecolor{clsL}{HTML}{FAE3D9}\definecolor{clsD}{HTML}{DFA48A}
+\definecolor{newL}{HTML}{FFD563}\definecolor{newD}{HTML}{D79B00}
+\definecolor{tokL}{HTML}{E8E8E8}\definecolor{tokD}{HTML}{9A9A9A}
+\definecolor{arrG}{HTML}{7A7A7A}
+\definecolor{emph}{HTML}{E2231A}
+
+\tikzset{
+  base/.style={rounded corners=2.5pt, line width=0.55pt, align=center, font=\scriptsize, inner sep=1.5pt},
+  lin/.style={base, draw=linD, fill=linL, minimum width=#1, minimum height=0.44cm},
+  tok/.style={base, draw=tokD, fill=tokL, minimum width=#1, minimum height=0.44cm},
+  mlp/.style={base, draw=mlpD, fill=mlpL, minimum width=1.6cm, minimum height=0.98cm},
+  cls/.style={base, draw=clsD, fill=clsL, minimum width=1.6cm, minimum height=0.98cm},
+  new/.style={base, draw=newD, fill=newL, minimum width=1.6cm, minimum height=0.98cm},
+  sq/.style={draw=#1, line width=0.5pt, minimum size=0.34cm, inner sep=0pt, font=\tiny},
+  arr/.style={-{Stealth[length=4.2pt,width=3.6pt]}, line width=0.75pt, draw=arrG},
+  sub/.style={font=\tiny, text=black!60},
+  title/.style={font=\small\bfseries},
+}
+
+% One member: standardize, regressor, optional gate/body MLP, sign classifier, outputs, recombination.
+% #1 name prefix, #2 x origin, #3 1 to draw the gate/body MLP and the loss mask.
+\newcommand{\member}[3]{
+  \begin{scope}[shift={(#2,0)}]
+    \ifnum#3=1 \def\wide{5.4}\else \def\wide{3.6}\fi
+    \pgfmathsetmacro{\cx}{\wide/2}
+    \node[tok=\wide cm] (#1-in) at (\cx,0) {Features: $V$, $T$, $W$, process};
+    \node[lin=\wide cm] (#1-std) at (\cx,0.9) {Standardize};
+    \node[mlp] (#1-reg) at (0.8,2.2) {Regressor\\[-1pt]{\tiny MLP $4{\times}256$}};
+    \ifnum#3=1
+      \node[new] (#1-gb) at (2.7,2.2) {Gate/body\\[-1pt]{\tiny MLP $4{\times}256$}};
+      \node[cls] (#1-cls) at (4.6,2.2) {Sign\\[-1pt]classifier};
+    \else
+      \node[cls] (#1-cls) at (2.8,2.2) {Sign\\[-1pt]classifier};
+    \fi
+    % Regressor outputs log10|I| of the four terminals.
+    \foreach \t [count=\i] in {d,g,s,b} {
+      \node[sq=mlpD, fill=mlpL] (#1-y\t) at ($(0.8,3.45)+(\i*0.38-0.95,0)$) {\t};
+    }
+    \ifnum#3=1
+      \node[sq=newD, fill=newL] (#1-zg) at ($(2.7,3.45)+(-0.19,0)$) {g};
+      \node[sq=newD, fill=newL] (#1-zb) at ($(2.7,3.45)+(0.19,0)$) {b};
+      \node[sq=clsD, fill=clsL] (#1-sd) at ($(4.6,3.45)+(-0.19,0)$) {d};
+      \node[sq=clsD, fill=clsL] (#1-ss) at ($(4.6,3.45)+(0.19,0)$) {s};
+    \else
+      \node[sq=clsD, fill=clsL] (#1-sd) at ($(2.8,3.45)+(-0.19,0)$) {d};
+      \node[sq=clsD, fill=clsL] (#1-ss) at ($(2.8,3.45)+(0.19,0)$) {s};
+    \fi
+    \node[lin=\wide cm] (#1-out) at (\cx,4.55) {$I = \mathrm{sign}\cdot 10^{\,y}$};
+    % Wires.
+    \draw[arr] (#1-in) -- (#1-std);
+    \draw[arr] (#1-std.north -| #1-reg) -- (#1-reg);
+    \draw[arr] (#1-std.north -| #1-cls) -- (#1-cls);
+    \coordinate (#1-yt) at ($(#1-yg.north)!0.5!(#1-ys.north)$);
+    \coordinate (#1-yu) at ($(#1-yg.south)!0.5!(#1-ys.south)$);
+    \coordinate (#1-st) at ($(#1-sd.north)!0.5!(#1-ss.north)$);
+    \coordinate (#1-su) at ($(#1-sd.south)!0.5!(#1-ss.south)$);
+    \draw[arr] (#1-reg) -- (#1-yu);
+    \draw[arr] (#1-cls) -- (#1-su);
+    \draw[arr] (#1-yt) -- (#1-yt |- #1-out.south);
+    \draw[arr] (#1-st) -- (#1-st |- #1-out.south);
+    \node[sub, left=1pt of #1-yd] {$y$};
+    \ifnum#3=1
+      \coordinate (#1-zt) at ($(#1-zg.north)!0.5!(#1-zb.north)$);
+      \coordinate (#1-zu) at ($(#1-zg.south)!0.5!(#1-zb.south)$);
+      \draw[arr] (#1-std.north -| #1-gb) -- (#1-gb);
+      \draw[arr] (#1-gb) -- (#1-zu);
+      \draw[arr] (#1-zt) -- (#1-zt |- #1-out.south);
+      \node[font=\tiny\bfseries, text=newD, anchor=south east, inner sep=1pt] at (#1-gb.north east) {ON};
+      % OFF cases leave I_g at or below 1e-26 A out of the regressor loss.
+      \node[draw=emph, dashed, line width=0.6pt, rounded corners=1pt, inner sep=1.2pt, fit=(#1-yg)] (#1-mask) {};
+      \node[font=\tiny, text=emph, anchor=south, inner sep=1pt] at (#1-mask.north) {mask};
+    \fi
+  \end{scope}
+}
+
+\begin{document}
+\sansmath
+\begin{tikzpicture}
+
+% (a) Baseline, faded.
+\begin{scope}[opacity=0.45, transparency group]
+  \member{a}{0}{0}
+  \draw[arr] (a-out) -- ++(0,0.75) node[above, tok=2.6cm, opacity=1] {$I_d,\ I_g,\ I_s,\ I_b$};
+\end{scope}
+\node[title, text=black!45] at (1.8,-0.85) {Baseline};
+
+% (b) + gate/body MLP (ON) and masked loss (OFF), faded.
+\begin{scope}[opacity=0.45, transparency group]
+  \member{b}{4.6}{1}
+  \draw[arr] (b-out) -- ++(0,0.75) node[above, tok=2.6cm] {$I_d,\ I_g,\ I_s,\ I_b$};
+  \node[font=\tiny, text=emph, anchor=north] at ($(b-mask.south)+(0,-0.02)$) {};
+\end{scope}
+\node[title, text=black!45] at (7.3,-0.85) {+ Gate/body MLP, masked loss};
+
+% (c) Frozen method: five seeds of (b), averaged in log10|I| with a majority sign.
+\begin{scope}[shift={(0,0)}]
+  % Four member cards behind the front one.
+  \foreach \k in {4,3,2,1} {
+    \draw[draw=black!35, fill=white, line width=0.5pt, rounded corners=4pt]
+      ($(11.25,-0.45)+(\k*0.11,\k*0.11)$) rectangle ($(17.15,4.95)+(\k*0.11,\k*0.11)$);
+  }
+  \draw[draw=black!55, fill=white, line width=0.6pt, rounded corners=4pt] (11.25,-0.45) rectangle (17.15,4.95);
+  \member{c}{11.5}{1}
+  \node[base, draw=emph, fill=newL, line width=0.9pt, minimum width=5.4cm, minimum height=0.5cm]
+    (c-ens) at (14.2,6.2) {\textcolor{emph}{Mean of $\log_{10}|I|$, majority sign}};
+  \draw[arr, draw=black, line width=0.9pt] (c-out) -- (c-ens);
+  \draw[arr, draw=black] (c-ens) -- ++(0,0.75) node[above, tok=2.6cm, draw=black!70] {$I_d,\ I_g,\ I_s,\ I_b$};
+\end{scope}
+\node[title] at (14.2,-0.85) {+ 5-seed ensemble (ours)};
+
+\end{tikzpicture}
+\end{document}

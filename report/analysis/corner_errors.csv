@@ -1,0 +1,9 @@
+level,variable,spearman_abs_error,spearman_signed_error
+gates,temp,0.1981,-0.103
+gates,vdd,-0.05644,0.09483
+gates,nmos_vth0_ratio,-0.03316,0.07875
+gates,pmos_vth0_ratio,0.02821,-0.03191
+adder,temp,0.2644,-0.01281
+adder,vdd,-0.1237,0.0508
+adder,nmos_vth0_ratio,0.1483,0.2327
+adder,pmos_vth0_ratio,-0.01448,-0.1002

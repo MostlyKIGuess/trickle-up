@@ -1,0 +1,5 @@
+case,set,rows,exactly_zero,below_floor_1e-30,smallest_nonzero_A,median_A
+nmos_off,uniform,10000,0,0,1.17588e-26,2.2986e-21
+nmos_off,targeted,5000,544,1069,2.64556e-78,8.96161e-23
+pmos_off,uniform,10000,0,0,7.07382e-26,2.56666e-21
+pmos_off,targeted,5000,744,1053,7.7484e-42,1.1031e-22
